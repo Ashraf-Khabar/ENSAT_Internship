@@ -19,8 +19,8 @@ const Register = () => {
                 password: password,
                 confPassword: confPassword
             });
-            toast.error("Register successful");
-            history.push("/");
+            toast.success("Register successful");
+            history.push("/login");
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.msg);
@@ -47,7 +47,7 @@ const Register = () => {
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Repeat password"
+                                <input onChange={(e) => setConfPassword(e.target.value)} type="password" placeholder="Repeat password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input value="Register" type="submit"
                                        className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"/>
