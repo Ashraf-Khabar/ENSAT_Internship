@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import {toast} from "react-toastify";
 
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
-    const [msg, setMsg] = useState('');
     const history = useHistory();
 
     const Register = async (e) => {
@@ -19,10 +19,11 @@ const Register = () => {
                 password: password,
                 confPassword: confPassword
             });
+            toast.error("Register successful");
             history.push("/");
         } catch (error) {
             if (error.response) {
-                setMsg(error.response.data.msg);
+                toast.error(error.response.data.msg);
             }
         }
     }
@@ -38,27 +39,15 @@ const Register = () => {
                             <p className="text-md md:text-xl">Sign up or log in to place the order,no password
                                 require!</p>
                         </div>
-                        <form onSubmit={registerHandle}>
+                        <form onSubmit={Register}>
                             <div className="flex flex-col max-w-md space-y-5">
-                                <input onChange={(e) => setUserRealName(e.target.value)} type="text" placeholder="Name"
+                                <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Name"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setUserLastName(e.target.value)} type="text"
-                                       placeholder="Surname"
+                                <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder="Username"
+                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setUserEmail(e.target.value)} type="email" placeholder="Email"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setUserAge(e.target.value)} type="number" placeholder="Age"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <select onChange={(e) => setUserRole(e.target.value)} type="text" placeholder="Role"
-                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
-                                    <option value="Student">Student</option>
-                                    <option value="Loareat de l'ensat">Loareat de l'ensat</option>
-                                    <option value="Rh">Rh</option>
-                                </select>
-                                <input onChange={(e) => setUserPswd(e.target.value)} type="password"
-                                       placeholder="Password"
+                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Repeat password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input value="Register" type="submit"
                                        className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"/>
@@ -81,7 +70,6 @@ const Register = () => {
             </div>
         </div>
         </body>
-    );
     )
 }
 
