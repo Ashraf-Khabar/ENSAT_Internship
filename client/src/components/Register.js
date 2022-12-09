@@ -28,47 +28,60 @@ const Register = () => {
     }
 
     return (
-        <section className="hero has-background-grey-light is-fullheight is-fullwidth">
-            <div className="hero-body">
-                <div className="container">
-                    <div className="columns is-centered">
-                        <div className="column is-4-desktop">
-                            <form onSubmit={Register} className="box">
-                                <p className="has-text-centered">{msg}</p>
-                                <div className="field mt-5">
-                                    <label className="label">Name</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Name"
-                                               value={name} onChange={(e) => setName(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <label className="label">Email</label>
-                                    <div className="controls">
-                                        <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <label className="label">Password</label>
-                                    <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <label className="label">Confirm Password</label>
-                                    <div className="controls">
-                                        <input type="password" className="input" placeholder="******" value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
-                                    </div>
-                                </div>
-                                <div className="field mt-5">
-                                    <button className="button is-success is-fullwidth">Register</button>
-                                </div>
-                            </form>
+        <body className="bg-white">
+        <div className="flex min-h-screen">
+            <div className="flex flex-row w-full">
+                <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
+                    <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
+                        <div className="flex flex-col space-y-2 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold">Create an account</h2>
+                            <p className="text-md md:text-xl">Sign up or log in to place the order,no password
+                                require!</p>
                         </div>
+                        <form onSubmit={registerHandle}>
+                            <div className="flex flex-col max-w-md space-y-5">
+                                <input onChange={(e) => setUserRealName(e.target.value)} type="text" placeholder="Name"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <input onChange={(e) => setUserLastName(e.target.value)} type="text"
+                                       placeholder="Surname"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <input onChange={(e) => setUserName(e.target.value)} type="text" placeholder="Username"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <input onChange={(e) => setUserEmail(e.target.value)} type="email" placeholder="Email"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <input onChange={(e) => setUserAge(e.target.value)} type="number" placeholder="Age"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <select onChange={(e) => setUserRole(e.target.value)} type="text" placeholder="Role"
+                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
+                                    <option value="Student">Student</option>
+                                    <option value="Loareat de l'ensat">Loareat de l'ensat</option>
+                                    <option value="Rh">Rh</option>
+                                </select>
+                                <input onChange={(e) => setUserPswd(e.target.value)} type="password"
+                                       placeholder="Password"
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <input value="Register" type="submit"
+                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"/>
+
+                                <div className="flex justify-center items-center">
+                                    <span className="w-full border border-black"></span>
+                                    <span className="px-4">Or</span>
+                                    <span className="w-full border border-black"></span>
+                                </div>
+                                <button
+                                    className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative">
+              <span className="absolute left-4">
+              </span>
+                                    <span>Sign up with Google</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+        </body>
+    );
     )
 }
 
