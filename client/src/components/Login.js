@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
+import {toast} from "react-toastify";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -14,10 +15,11 @@ const Login = () => {
                 email: email,
                 password: password
             });
+            toast.success("Logged in successfully");
             history.push("/dashboard");
         } catch (error) {
             if (error.response) {
-                console.log(error.response.data.msg);
+                toast.error(error.response.data.msg);
             }
         }
     }
@@ -70,7 +72,7 @@ const Login = () => {
                         </div>
                         <form onSubmit={Auth}>
                             <div className="flex flex-col max-w-md space-y-5">
-                                <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Username"
+                                <input onChange={(e) => setEmail(e.target.value)} type="text" placeholder="Email"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>

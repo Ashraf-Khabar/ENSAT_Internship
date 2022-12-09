@@ -7,11 +7,14 @@ import MainNavBar from "./components/MainNavBar";
 import './App.css';
 import Page_404 from "./components/Page_404";
 import Home from "./components/Home";
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   return (
       <Router>
           <div className="App">
+              <ToastContainer/>
               <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
                   <Switch>
                       <Route exact path="/">
