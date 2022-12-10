@@ -8,21 +8,24 @@ import './App.css';
 import Page_404 from "./components/Page_404";
 import Home from "./components/Home";
 import {ToastContainer, toast} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
+import {useState} from "react";
 
 function App() {
+    const [userId, setUserId] = useState(null);
+    
   return (
       <Router>
           <div className="App">
               <ToastContainer/>
               <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
-                  <Navbar/>
+                  <Navbar userId={userId} setUserId={setUserId}/>
                   <Switch>
                       <Route exact path="/">
                           <Home/>
                       </Route>
-                      <Route path="/login">
-                          <Login/>
+                      <Route path="/login" >
+                          <Login setUserId={setUserId}/>
                       </Route>
                       <Route path="/register">
                           <Register/>

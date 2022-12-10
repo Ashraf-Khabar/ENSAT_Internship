@@ -3,14 +3,14 @@ import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 
-const Navbar = () => {
+const Navbar = ({userId, setUserId}) => {
     const history = useHistory();
-    const [userId, setUserId] = useState(null);
 
     const [navbar, setNavbar] = useState(false);
     const Logout = async () => {
         try {
             await axios.delete('http://localhost:5000/logout');
+            setUserId(null);
             history.push("/");
         } catch (error) {
             console.log(error);
@@ -20,6 +20,7 @@ const Navbar = () => {
     const refreshToken = async () => {
         try {
             const response = await axios.get('http://localhost:5000/token');
+            console.log();
             const decoded = jwt_decode(response.data.accessToken);
             console.log(decoded);
             setUserId(decoded.userId);
@@ -30,14 +31,13 @@ const Navbar = () => {
         }
     }
 
-
     useEffect( () => {
         console.log(userId);
     }, [userId])
 
     useEffect(() => {
         refreshToken();
-    }, []);
+    }, [userId]);
     
     return (
         <nav className="w-full bg-white shadow">
