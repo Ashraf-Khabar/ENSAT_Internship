@@ -21,13 +21,19 @@ const Navbar = () => {
         try {
             const response = await axios.get('http://localhost:5000/token');
             const decoded = jwt_decode(response.data.accessToken);
-            setUserId(decoded.id);
+            console.log(decoded);
+            setUserId(decoded.userId);
         } catch (error) {
             if (error.response) {
                 history.push("/");
             }
         }
     }
+
+
+    useEffect( () => {
+        console.log(userId);
+    }, [userId])
 
     useEffect(() => {
         refreshToken();
