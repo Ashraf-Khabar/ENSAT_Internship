@@ -1,9 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
+import Employeurs from "./EmployeurModel.js";
+import Etudiants from "./EtudiantModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Users = db.define('users',{
+const Users = db.define('Users',{
     name:{
         type: DataTypes.STRING
     },
@@ -16,9 +18,18 @@ const Users = db.define('users',{
     refresh_token:{
         type: DataTypes.TEXT
     }
-},{
+},
+{
     freezeTableName:true
 });
+
+Users.hasOne(Employeurs);
+
+Users.hasOne(Etudiants,{
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  });
+
 
 (async () => {
     await db.sync();
