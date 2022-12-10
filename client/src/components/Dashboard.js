@@ -284,7 +284,7 @@ const Dashboard = () => {
                             <p className="mt-4">Regards,</p>
                             <p>Betty Garmon</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
