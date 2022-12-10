@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
@@ -7,8 +8,12 @@ import MainNavBar from "./components/MainNavBar";
 import './App.css';
 import Page_404 from "./components/Page_404";
 import Home from "./components/Home";
+<<<<<<< Updated upstream
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+=======
+// import {ToastContainer} from "react-toastify";
+>>>>>>> Stashed changes
 
 function App() {
   return (

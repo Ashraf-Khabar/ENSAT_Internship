@@ -1,3 +1,4 @@
+import React from 'react';
 const Home = () => {
     return (
         <div className="container relative z-10 flex items-center px-6 py-32 mx-auto md:px-12 xl:py-40">
