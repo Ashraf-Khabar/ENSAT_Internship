@@ -55,7 +55,7 @@ const Dashboard = () => {
         });
         setUsers(response.data);
     }
-    // <h1>Welcome Back: {name}</h1>
+
     return (
         <div className="container px-6 py-10 mx-auto">
             <div className="w-full bg-white shadow-xl rounded-lg flex overflow-x-auto custom-scrollbar">
@@ -251,8 +251,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="mb-6">
-                        <h4 className="text-lg text-gray-800 font-bold pb-2 mb-4 border-b-2">Lorem ipsum dolor sit amet,
-                            consectetur adipiscing elit</h4>
+                        <h4 className="text-lg text-gray-800 font-bold pb-2 mb-4 border-b-2"><h1>Welcome Back: {name}</h1></h4>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <div className="flex flex-col ml-2">
@@ -289,9 +288,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-
-    )
-        ;
+    );
 }
 
 export default Dashboard;
