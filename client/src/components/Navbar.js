@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 const Navbar = () => {
     const history = useHistory();
+    const [userId, setUserId] = useState(null);
+
     const [navbar, setNavbar] = useState(false);
     const Logout = async () => {
         try {
@@ -14,6 +17,22 @@ const Navbar = () => {
         }
     }
 
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/token');
+            const decoded = jwt_decode(response.data.accessToken);
+            setUserId(decoded.id);
+        } catch (error) {
+            if (error.response) {
+                history.push("/");
+            }
+        }
+    }
+
+    useEffect(() => {
+        refreshToken();
+    }, []);
+    
     return (
         <nav className="w-full bg-white shadow">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -79,9 +98,13 @@ const Navbar = () => {
                             <li className="text-gray-600 hover:text-blue-600">
                                 <Link to="contact-us">Contact US</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-blue-600">
+                            { userId ? <li className="text-gray-600 hover:text-blue-600">
                                 <button onClick={Logout} >Log out</button>
+                            </li> :
+                            <li className="text-gray-600 hover:text-blue-600">
+                                    <Link to="/login" >Log in</Link>
                             </li>
+                            }
                         </ul>
                     </div>
                 </div>

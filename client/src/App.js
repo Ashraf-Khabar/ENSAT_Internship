@@ -16,25 +16,21 @@ function App() {
           <div className="App">
               <ToastContainer/>
               <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
+                  <Navbar/>
                   <Switch>
                       <Route exact path="/">
-                          <MainNavBar/>
                           <Home/>
                       </Route>
                       <Route path="/login">
-                          <MainNavBar/>
                           <Login/>
                       </Route>
                       <Route path="/register">
-                          <MainNavBar/>
                           <Register/>
                       </Route>
                       <Route path="/dashboard">
-                          <Navbar/>
                           <Dashboard/>
                       </Route>
                       <Route path="*">
-                          <MainNavBar/>
                           <Page_404/>
                       </Route>
                   </Switch>
