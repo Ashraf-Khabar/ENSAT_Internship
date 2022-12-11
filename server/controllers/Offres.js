@@ -17,7 +17,7 @@ export const getOffres = async (req, res) => {
 
 export const getOffre = async (req, res) => { 
     try {
-      const Offre = await Offres.findById({
+      const Offre = await Offres.findByPk({
         where: {
           id:req.body.id
 
@@ -28,3 +28,35 @@ export const getOffre = async (req, res) => {
       next(err);
     }
 }
+
+export const deleteOffre = async (req, res) => {
+  try {
+    await Offres.destroy(
+      {
+        where: {
+          id: req.params.id
+        }
+      });
+    res.status(200).json("Internship Offer deleted.");
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const updateOffre = async (req, res) => {
+  try {
+    const updatedOffre = await Offres.update(
+      
+      { $set: req.body },
+      { new: true },
+       {
+        where: {
+          id: req.params.id
+        }
+      }
+    );
+    res.status(200).json(updatedOffre);
+  } catch (err) {
+    next(err);
+  }
+};
