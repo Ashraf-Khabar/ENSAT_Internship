@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
 import {toast} from "react-toastify";
+import redirect from "react-router-dom/es/Redirect";
 
 const Login = ({setUserId}) => {
+    const isLoggedIn = () => {
+        if(setUserId != null) {
+            redirect("/");
+        }
+    }
+
+    useEffect( () => {
+        isLoggedIn();
+    }, []);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
