@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
+import Profile from "./components/Profile";
 
 function App() {
     const [userId, setUserId] = useState(null);
@@ -52,8 +53,11 @@ function App() {
                       <Route path="/register">
                           <Register/>
                       </Route>
-                      <Route path="/dashboard">
+                      <Route exact path="/dashboard">
                           <Dashboard/>
+                      </Route>
+                      <Route path="/dashboard/profile">
+                          <Profile/>
                       </Route>
                       <Route path="*">
                           <Page_404/>
