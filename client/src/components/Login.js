@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
 import {toast} from "react-toastify";
 
-const Login = () => {
+const Login = ({setUserId}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -11,10 +11,11 @@ const Login = () => {
     const Auth = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/login', {
+            const reslut = await axios.post('http://localhost:5000/login', {
                 email: email,
                 password: password
             });
+            setUserId(reslut.data.accessToken);
             toast.success("Logged in successfully");
             history.push("/dashboard");
         } catch (error) {
