@@ -1,26 +1,55 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+import appLogo from "../img/appLogo.png";
+import { toast } from 'react-toastify';
 
-const Navbar = () => {
+const Navbar = ({userId, setUserId}) => {
     const history = useHistory();
+
     const [navbar, setNavbar] = useState(false);
     const Logout = async () => {
-        try {
-            await axios.delete('http://localhost:5000/logout');
-            history.push("/");
-        } catch (error) {
-            console.log(error);
+        if(window.confirm("Are you sure you want to Log out : ")){
+            try {
+                await axios.delete('http://localhost:5000/logout');
+                setUserId(null);
+                history.push("/");
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/token');
+            console.log();
+            const decoded = jwt_decode(response.data.accessToken);
+            console.log(decoded);
+            setUserId(decoded.userId);
+        } catch (error) {
+            if (error.response) {
+                history.push("/");
+            }
+        }
+    }
+
+    useEffect( () => {
+        console.log(userId);
+    }, [userId])
+
+    useEffect(() => {
+        refreshToken();
+    }, [userId]);
+    
     return (
         <nav className="w-full bg-white shadow">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link to="/">
-                            <h2 className="text-2xl font-bold">LOGO dialna</h2>
+                            <img src={appLogo} style={{ width: '80px', height: 'px' }}  alt="logo"/>
                         </Link>
                         <div className="md:hidden">
                             <button
@@ -79,9 +108,13 @@ const Navbar = () => {
                             <li className="text-gray-600 hover:text-blue-600">
                                 <Link to="contact-us">Contact US</Link>
                             </li>
-                            <li className="text-gray-600 hover:text-blue-600">
+                            { userId ? <li className="text-gray-600 hover:text-blue-600">
                                 <button onClick={Logout} >Log out</button>
+                            </li> :
+                            <li className="text-gray-600 hover:text-blue-600">
+                                    <Link to="/login" >Log in</Link>
                             </li>
+                            }
                         </ul>
                     </div>
                 </div>
