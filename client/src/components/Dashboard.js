@@ -57,233 +57,102 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="container px-6 py-10 mx-auto">
-            <div className="w-full bg-white shadow-xl rounded-lg flex overflow-x-auto custom-scrollbar">
-                <div className="w-64 px-4">
-                    <div className="h-16 flex items-center">
-                        <a href="#"
-                           className="w-48 mx-auto bg-blue-600 hover:bg-blue-700 flex items-center justify-center text-gray-100 py-2 rounded space-x-2 transition duration-150">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                            </svg>
-                            <span>Compose</span>
-                        </a>
-                    </div>
-                    <div className="px-2 pt-4 pb-8 border-r border-gray-300">
-                        <ul className="space-y-2">
-                            <li>
-                                <a className="bg-gray-500 bg-opacity-30 text-blue-600 flex items-center justify-between py-1.5 px-4 rounded cursor-pointer">
-                                            <span className="flex items-center space-x-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
-                                                </svg>
-                                                <span>Inbox</span>
-                                            </span>
-                                    <span className="bg-sky-500 text-gray-100 font-bold px-2 py-0.5 text-xs rounded-lg">3</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+        <div className="min-h-screen bg-gray-100">
+            <div
+                className="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg">
+                <div className="flex h-screen flex-col justify-between pt-2 pb-6">
+                    <div>
+                        <strong>{name}</strong>
+                        <div className="w-max p-2.5">
+                        </div>
+                        <ul className="mt-6 space-y-2 tracking-wide">
+                            <li className="min-w-max">
+                                <a href="#" aria-label="dashboard"
+                                   className="relative flex items-center space-x-4 bg-gradient-to-r from-sky-600 to-cyan-400 px-4 py-3 text-white">
+                                    <svg className="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                                        <path
+                                            d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
+                                            className="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                                        <path
+                                            d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
+                                            className="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+                                        <path
+                                            d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
+                                            className="fill-current group-hover:text-sky-300"></path>
                                     </svg>
-                                    <span>Starred</span>
+                                    <span className="-mr-1 font-medium">Dashboard</span>
                                 </a>
                             </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <li className="min-w-max">
+                                <a href="#"
+                                   className="bg group flex items-center space-x-4 rounded-full px-4 py-3 text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path className="fill-current text-gray-300 group-hover:text-cyan-300"
+                                              fill-rule="evenodd"
+                                              d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                                              clip-rule="evenodd"/>
+                                        <path className="fill-current text-gray-600 group-hover:text-cyan-600"
+                                              d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/>
                                     </svg>
-                                    <span>Snoozed</span>
+                                    <span className="group-hover:text-gray-700">Categories</span>
                                 </a>
                             </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            <li className="min-w-max">
+                                <a href="#"
+                                   className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path className="fill-current text-gray-600 group-hover:text-cyan-600"
+                                              fill-rule="evenodd"
+                                              d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                              clip-rule="evenodd"/>
+                                        <path className="fill-current text-gray-300 group-hover:text-cyan-300"
+                                              d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"/>
                                     </svg>
-                                    <span>Important</span>
+                                    <span className="group-hover:text-gray-700">Reports</span>
                                 </a>
                             </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rotate-90" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            <li className="min-w-max">
+                                <a href="#"
+                                   className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path className="fill-current text-gray-600 group-hover:text-cyan-600"
+                                              d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"/>
+                                        <path className="fill-current text-gray-300 group-hover:text-cyan-300"
+                                              d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"/>
                                     </svg>
-                                    <span>Sent</span>
+                                    <span className="group-hover:text-gray-700">Other data</span>
                                 </a>
                             </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center justify-between text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                            <span className="flex items-center space-x-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                                </svg>
-                                                <span>Drafts</span>
-                                            </span>
-                                    <span className="bg-sky-500 text-gray-100 font-bold px-2 py-0.5 text-xs rounded-lg">1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            <li className="min-w-max">
+                                <a href="#"
+                                   className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path className="fill-current text-gray-300 group-hover:text-cyan-300"
+                                              d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
+                                        <path className="fill-current text-gray-600 group-hover:text-cyan-600"
+                                              fill-rule="evenodd"
+                                              d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                                              clip-rule="evenodd"/>
                                     </svg>
-                                    <span>Spam</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a className="hover:bg-gray-500 hover:bg-opacity-10 hover:text-blue-600 flex items-center text-gray-700 py-1.5 px-4 rounded space-x-2 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                    </svg>
-                                    <span>Trash</span>
+                                    <span className="group-hover:text-gray-700">Finance</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div>
-                    <div className="h-16 flex items-center justify-between">
-                        <div className="flex items-center">
-                            <a href="#"
-                               className="flex items-center text-gray-700 px-2 py-1 space-x-0.5 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100"
-                               title="Back">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
-                                     fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                          d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                                <span className="text-sm font-bold">Back</span>
-                            </a>
-                            <div className="flex items-center">
-                                <span className="bg-gray-300 h-6 w-[.5px] mx-3"></span>
-                                <div className="flex items-center space-x-2">
-                                    <button title="Archive"
-                                            className="text-gray-700 px-2 py-1 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20"></path>
-                                        </svg>
-                                    </button>
-                                    <button title="Mark As Spam"
-                                            className="text-gray-700 px-2 py-1 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                                        </svg>
-                                    </button>
-                                    <button title="Delete"
-                                            className="text-gray-700 px-2 py-1 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <span className="bg-gray-300 h-6 w-[.5px] mx-3"></span>
-                                <div className="flex items-center space-x-2">
-                                    <button title="Mark As Unread"
-                                            className="text-gray-700 px-2 py-1 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </button>
-                                    <button title="Add Star"
-                                            className="text-gray-700 px-2 py-1 border border-gray-300 rounded-lg shadow hover:bg-gray-200 transition duration-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="px-2 flex items-center space-x-4">
-                            <div className="flex items-center space-x-2">
-                                <button className="bg-gray-200 text-gray-400 p-1.5 rounded-lg" title="Previous Email">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
-                                         fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <button
-                                    className="bg-gray-200 hover:bg-gray-300 text-gray-700 p-1.5 rounded-lg transition duration-150"
-                                    title="Nex Email">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20"
-                                         fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                              clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mb-6">
-                        <h4 className="text-lg text-gray-800 font-bold pb-2 mb-4 border-b-2"><h1>Welcome Back: {name}</h1></h4>
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <div className="flex flex-col ml-2">
-                                    <span className="text-sm font-semibold">Betty Garmon</span>
-                                    <span className="text-xs text-gray-400">From: bettygarmon@example.com</span>
-                                </div>
-                            </div>
-                            <span className="text-sm text-gray-500">Jan 30, 2022, 10:23 AM</span>
-                        </div>
-                        <div className="py-6 pl-2 text-gray-700">
-                            <p>Hi John!</p>
-                            <p className="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                            <p className="mt-4">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum.</p>
-                            <p className="mt-4">Sed ut perspiciatis unde omnis iste natus error sit:</p>
-                            <ul className="ml-12 list-disc">
-                                <li>voluptatem accusantium</li>
-                                <li>doloremque laudantium</li>
-                                <li>totam rem aperiam</li>
-                                <li>eaque ipsa quae ab illo inventore veritatis</li>
-                                <li>quasi architecto</li>
-                            </ul>
-                            <p className="mt-4">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro
-                                quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.</p>
-                            <p className="mt-4">Regards,</p>
-                            <p>Betty Garmon</p>
-                        </div>
-                        
+                    <div className="w-max -mb-3">
+                        <a href="#" className="group flex items-center space-x-4 rounded-md px-4 py-3 text-gray-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:fill-cyan-600"
+                                 viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <span className="group-hover:text-gray-700">Settings</span>
+                        </a>
                     </div>
                 </div>
             </div>
