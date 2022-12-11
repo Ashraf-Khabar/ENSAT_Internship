@@ -46,7 +46,7 @@ const Navbar = ({userId, setUserId}) => {
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link to="/">
-                            <img src={appLogo} style={{ width: '100px', height: '100px' }}  alt="logo"/>
+                            <img src={appLogo} style={{ width: '120px', height: 'px' }}  alt="logo"/>
                         </Link>
                         <div className="md:hidden">
                             <button
