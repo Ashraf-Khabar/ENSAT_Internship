@@ -3,18 +3,21 @@ import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import appLogo from "../img/appLogo.png";
+import { toast } from 'react-toastify';
 
 const Navbar = ({userId, setUserId}) => {
     const history = useHistory();
 
     const [navbar, setNavbar] = useState(false);
     const Logout = async () => {
-        try {
-            await axios.delete('http://localhost:5000/logout');
-            setUserId(null);
-            history.push("/");
-        } catch (error) {
-            console.log(error);
+        if(window.confirm("Are you sure you want to Log out : ")){
+            try {
+                await axios.delete('http://localhost:5000/logout');
+                setUserId(null);
+                history.push("/");
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
@@ -46,7 +49,7 @@ const Navbar = ({userId, setUserId}) => {
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link to="/">
-                            <img src={appLogo} style={{ width: '120px', height: 'px' }}  alt="logo"/>
+                            <img src={appLogo} style={{ width: '80px', height: 'px' }}  alt="logo"/>
                         </Link>
                         <div className="md:hidden">
                             <button

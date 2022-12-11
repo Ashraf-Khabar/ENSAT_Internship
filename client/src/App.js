@@ -17,7 +17,7 @@ function App() {
   return (
       <Router>
           <div className="App">
-              <ToastContainer/>
+              <ToastContainer position="top-center"/>
               <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
                   <Navbar userId={userId} setUserId={setUserId}/>
                   <Switch>

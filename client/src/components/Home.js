@@ -1,6 +1,6 @@
 const Home = () => {
     return (
-        <div className="container relative z-10 flex items-center px-6 py-32 mx-auto md:px-12 xl:py-40">
+        <div className="container relative z-10 flex  px-6 py-32  md:px-12 xl:py-40">
             <div className="relative z-10 flex flex-col items-start lg:w-3/5 xl:w-2/5">
             <span className="font-bold text-yellow-400 uppercase">
                 Stage app (mazal mal9ina smiya o logo )
