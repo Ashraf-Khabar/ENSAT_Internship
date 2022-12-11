@@ -112,7 +112,7 @@ const Dashboard = () => {
             <div className=" min-h-screen w-full">
 
                 <div className="w-full ">
-                    <nav className="flex justify-between px-10 bg-white py-6">
+                    <nav className="flex justify-between px-1 bg-white py-1">
                         <div className="flex items-center">
                             <img style={{margin: '10px', width: '45px', height: 'px'}} className="w-8 rounded-full"
                                  src="https://imagez.tmz.com/image/f7/1by1/2021/12/14/f7703994b69d48ca802df55729a2325c_xl.jpg"
