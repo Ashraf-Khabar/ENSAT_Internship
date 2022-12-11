@@ -108,6 +108,10 @@ const Navbar = ({userId, setUserId}) => {
                             <li className="text-gray-600 hover:text-blue-600">
                                 <Link to="contact-us">Contact US</Link>
                             </li>
+                            { userId && <li className="text-gray-600 hover:text-blue-600">
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                            }
                             { userId ? <li className="text-gray-600 hover:text-blue-600">
                                 <button onClick={Logout} >Log out</button>
                             </li> :

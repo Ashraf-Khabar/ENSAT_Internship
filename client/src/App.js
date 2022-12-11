@@ -3,7 +3,6 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
-import MainNavBar from "./components/MainNavBar";
 import './App.css';
 import Page_404 from "./components/Page_404";
 import Home from "./components/Home";
@@ -13,7 +12,30 @@ import {useState} from "react";
 
 function App() {
     const [userId, setUserId] = useState(null);
-    
+
+    /* this function is for frontend */
+    const setup = () => {
+        const getTheme = () => {
+            if (window.localStorage.getItem('dark')) {
+                return JSON.parse(window.localStorage.getItem('dark'))
+            }
+            return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        }
+
+        const setTheme = (value) => {
+            window.localStorage.setItem('dark', value)
+        }
+
+        return {
+            loading: true,
+            isDark: getTheme(),
+            toggleTheme() {
+                this.isDark = !this.isDark
+                setTheme(this.isDark)
+            },
+        }
+    }
+
   return (
       <Router>
           <div className="App">
