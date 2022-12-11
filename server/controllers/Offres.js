@@ -1,6 +1,16 @@
 import Offres from "../models/OffreModel";
 
+// A confirmer le syntax dee create & update
+export const createOffre = async (req, res) => {
+  const newOffre = new Offres(req.body);
 
+  try {
+    const savedOffre = await newOffre.save();
+    res.status(200).json(savedOffre);
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const getOffres = async (req, res) => {
     try {
