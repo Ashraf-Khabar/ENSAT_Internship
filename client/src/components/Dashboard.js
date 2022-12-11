@@ -104,11 +104,10 @@ const Dashboard = () => {
                             </svg>
                             <span className="font-semibold">Setthing</span>
                         </li>
-                        <button className="w-full mt-10 bg-[#EC5252] rounded-full py-1.5 text-white">Learn</button>
                     </ul>
                 </div>
             </div>
-            <main className=" min-h-screen w-full">
+            <div className=" min-h-screen w-full">
                 <nav className="flex justify-between px-10 bg-white py-6">
                     <div className="flex items-center bg-gray-100 px-4 py-2 rounded-md space-x-3 w-96">
                         <input type="text" placeholder="search" className="bg-gray-100 outline-none w-full"/>
@@ -126,18 +125,9 @@ const Dashboard = () => {
                     </div>
                 </nav>
                 <div className="w-full ">
-                    <h1 className="text-2xl font-semibold"></h1>
-                    <div className="md:flex mt-4 space-x-4  justify-center">
-                        <div className="h-96 bg-gradient-to-r from-indigo-600 to-purple-500 flex items-end rounded-md">
-                            <p className="text-lg text-indigo-50">How to do Basic Jumping and how to landing safely</p>
-                        </div>
-                        <div className="h-96 bg-gradient-to-r from-yellow-600 to-red-500 flex items-end rounded-md">
-                            <p className="text-lg text-indigo-50">How to do Basic Jumping and how to landing safely</p>
-                        </div>
 
-                    </div>
                 </div>
-            </main>
+            </div>
         </div>
     );
 }
