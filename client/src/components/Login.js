@@ -5,15 +5,6 @@ import {toast} from "react-toastify";
 import redirect from "react-router-dom/es/Redirect";
 
 const Login = ({setUserId}) => {
-    const isLoggedIn = () => {
-        if(setUserId != null) {
-            redirect("/");
-        }
-    }
-
-    useEffect( () => {
-        isLoggedIn();
-    }, []);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
