@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import {useHistory} from 'react-router-dom';
+import 'tailwindcss/base.css';
+import 'tailwindcss/components.css';
 
 const Dashboard = () => {
     const [name, setName] = useState('');
@@ -61,7 +63,7 @@ const Dashboard = () => {
             <div className="flex w-2/5 md:w-1/4 h-screen bg-white">
                 <div className="mx-auto py-10">
                     <ul>
-                        <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
+                        <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] focus:text-[#EC5252] duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -69,7 +71,7 @@ const Dashboard = () => {
                             </svg>
                             <span className="font-semibold">Home</span>
                         </li>
-                        <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
+                        <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] active:text-[#EC5252] duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -108,24 +110,16 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className=" min-h-screen w-full">
-                <nav className="flex justify-between px-10 bg-white py-6">
-                    <div className="flex items-center bg-gray-100 px-4 py-2 rounded-md space-x-3 w-96">
-                        <input type="text" placeholder="search" className="bg-gray-100 outline-none w-full"/>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 cursor-pointer text-gray-500"
-                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                    <div className="flex items-center">
-                        <img style={{margin: '10px'}} className="w-8 rounded-full"
-                             src="https://imagez.tmz.com/image/f7/1by1/2021/12/14/f7703994b69d48ca802df55729a2325c_xl.jpg"
-                             alt="Elon Musk"/>
-                        <p>{name}</p>
-                    </div>
-                </nav>
-                <div className="w-full ">
 
+                <div className="w-full ">
+                    <nav className="flex justify-between px-10 bg-white py-6">
+                        <div className="flex items-center">
+                            <img style={{margin: '10px', width: '45px', height: 'px'}} className="w-8 rounded-full"
+                                 src="https://imagez.tmz.com/image/f7/1by1/2021/12/14/f7703994b69d48ca802df55729a2325c_xl.jpg"
+                                 alt="Elon Musk"/>
+                            <p>{name}</p>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>

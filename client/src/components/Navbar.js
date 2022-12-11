@@ -97,26 +97,26 @@ const Navbar = ({userId, setUserId}) => {
                     >
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link  className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] rounded-full py-1 px-2 text-white" to="/">Home</Link>
+                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/">Home</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] rounded-full py-1 px-2 text-white" to="/" to="/stages">Stages</Link>
+                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/" to="/stages">Stages</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] rounded-full py-1 px-2 text-white" to="/" to="/about-us">About US</Link>
+                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/" to="/about-us">About US</Link>
                             </li>
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] rounded-full py-1 px-2 text-white" to="/" to="contact-us">Contact US</Link>
+                                <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/" to="contact-us">Contact US</Link>
                             </li>
                             { userId && <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] rounded-full py-1 px-2 text-white" to="/" to="/dashboard">Dashboard</Link>
+                                    <Link className="w-full mt-15 bg-[#EC5252] hover:bg-[#1C7DB8] active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/" to="/dashboard">Dashboard</Link>
                                 </li>
                             }
                             { userId ? <li className="text-gray-600 hover:text-blue-600">
-                                <button className="w-full mt-15 bg-[#1C7DB8] hover:bg-[#EC5252] rounded-full py-1 px-2 text-white" to="/" onClick={Logout} >Log out</button>
+                                <button className="w-full mt-15 hover:text-[#CA7918] rounded-full py-1 px-2 text-[#1C7DB8]" to="/" onClick={Logout} >Log out</button>
                             </li> :
                             <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="w-full mt-15 bg-[#EC5252] hover:bg-blue-700 rounded-full py-1 px-2 text-white" to="/" to="/login" >Log in</Link>
+                                    <Link className="w-full mt-15 bg-[#EC5252] hover:bg-blue-700 active:bg-blue-800 rounded-full py-1 px-2 text-white" to="/" to="/login" >Log in</Link>
                             </li>
                             }
                         </ul>
