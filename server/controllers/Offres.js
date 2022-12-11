@@ -29,6 +29,19 @@ export const getOffre = async (req, res) => {
     }
 }
 
+export const getOffrebyEmployer = async (req, res) => { 
+  try {
+    const { count, rows } = await Offres.findAndCountAll({
+      where: {
+        EmployeurId: req.body.id
+      }
+
+    });tatus(200).json(count,rows);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export const deleteOffre = async (req, res) => {
   try {
     await Offres.destroy(
@@ -48,7 +61,7 @@ export const updateOffre = async (req, res) => {
     const updatedOffre = await Offres.update(
       
       { $set: req.body },
-      { new: true },
+     
        {
         where: {
           id: req.params.id
