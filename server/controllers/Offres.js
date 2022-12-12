@@ -1,7 +1,5 @@
 import Offres from "../models/OffreModel";
 
-// A confirmer le syntax dee create & update
-
 /* Post API : Create offer */
 export const createOffre = async (req, res) => {
   const newOffre = new Offres(req.body);
@@ -56,7 +54,7 @@ export const getOffrebyEmployer = async (req, res) => {
   }
 }
 
-
+/*API delete : delete offer*/
 export const deleteOffre = async (req, res) => {
   try {
     await Offres.destroy(
@@ -71,6 +69,7 @@ export const deleteOffre = async (req, res) => {
   }
 };
 
+/*Update offer */
 export const updateOffre = async (req, res) => {
   try {
     const updatedOffre = await Offres.update(

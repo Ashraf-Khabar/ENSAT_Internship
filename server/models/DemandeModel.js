@@ -16,7 +16,6 @@ const Demandes = db.define('Demandes',{
 
     
 },
-
 {
     freezeTableName:true
 });
