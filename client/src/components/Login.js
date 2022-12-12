@@ -35,15 +35,12 @@ const Login = ({setUserId}) => {
                 <div
                     className='hidden lg:flex flex-col justify-between bg-[#1889B0] lg:p-8 xl:p-12 lg:max-w-sm xl:max-w-lg'>
                     <div className="flex items-center justify-start space-x-3">
-                        <Link to="/" className="font-medium text-xl">
-                            <img src={appLogo} style={{ width: '120px', height: 'px' }}  alt="logo"/>
-                        </Link>
                     </div>
                     <div className='space-y-5'>
                         <h1 className="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">Enter your account and
                             discover new
                             experiences</h1>
-                        <p className="text-lg">You do not have an account?</p>
+                        <p className="text-lg text-decoration: underline">You do not have an account?</p>
                         <button>
                             <Link to="/register"
                                   className="inline-block flex-none px-4 py-3 border-2 rounded-lg font-medium border-black bg-black text-white">
