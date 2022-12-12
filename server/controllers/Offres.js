@@ -1,11 +1,12 @@
-import Offres from "../models/OffreModel";
+import offers from "../models/offerModel.js";
+import Employees from "../models/EmployeeModel.js";
 
 /* Post API : Create offer */
-export const createOffre = async (req, res) => {
-  const newOffre = new Offres(req.body);
+export const createOffer = async (req, res) => {
+  const newOffer = new offers(req.body);
 
   try {
-    const savedOffre = await newOffre.save();
+    const savedOffer = await newOffer.save();
     res.status(200).json({msg:"Offer created"});
   } catch (err) {
     next(err);
@@ -13,39 +14,39 @@ export const createOffre = async (req, res) => {
 };
 
 /*Get API : get All offer (select *) */
-export const getOffres = async (req, res) => {
+export const getOffers = async (req, res) => {
     try {
-      const Offre = await Offres.findAll({
+      const Offers = await offers.findAll({
         where: {
-          etat: 1
+          state: 1
         }
       });
-      res.status(200).json(Offre);
+      res.status(200).json(Offers);
     } catch (err) {
       next(err);
     }
 }
 
 /*Get offer based on id : */
-export const getOffre = async (req, res) => {
+export const getOffer = async (req, res) => {
     try {
-      const Offre = await Offres.findByPk({
+      const Offer= await offers.findByPk({
         where: {
           id:req.body.id
         }
       });
-      res.status(200).json(Offre);
+      res.status(200).json(Offer);
     } catch (err) {
       next(err);
     }
 }
 
 /*Get API : get offer by id of employee*/
-export const getOffrebyEmployer = async (req, res) => { 
+export const getOfferByEmployer = async (req, res) => {
   try {
-    const { count, rows } = await Offres.findAndCountAll({
+    const { count, rows } = await offers.findAndCountAll({
       where: {
-        EmployeurId: req.body.id
+        EmployeeIds: req.body.id
       }
     });
     res.status(200).json(count,rows);
@@ -55,9 +56,9 @@ export const getOffrebyEmployer = async (req, res) => {
 }
 
 /*API delete : delete offer*/
-export const deleteOffre = async (req, res) => {
+export const deleteOffer = async (req, res) => {
   try {
-    await Offres.destroy(
+    await offers.destroy(
       {
         where: {
           id: req.params.id
@@ -70,16 +71,16 @@ export const deleteOffre = async (req, res) => {
 };
 
 /*Update offer */
-export const updateOffre = async (req, res) => {
+export const updateOffer = async (req, res) => {
   try {
-    const updatedOffre = await Offres.update(
+    const updatedOffer = await offers.update(
       
       { $set: req.body },
        {
         where: {id: req.params.id}
       }
     );
-    res.status(200).json(updatedOffre,{msg:"Offer updated"});
+    res.status(200).json(updatedOffer,{msg:"Offer updated"});
   } catch (err) {
     next(err);
   }

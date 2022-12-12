@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Employeurs from "./EmployeurModel.js";
-import Etudiants from "./EtudiantModel.js";
+import Employees from "./EmployeeModel.js";
+import Students from "./StudentModel.js";
 
 const { DataTypes } = Sequelize;
 
@@ -23,12 +23,12 @@ const Users = db.define('Users',{
     freezeTableName:true
 });
 
-Users.hasOne(Employeurs);
+Users.hasOne(Employees);
 
-Users.hasOne(Etudiants,{
+Users.hasOne(Students,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
-  });
+});
 
 
 (async () => {

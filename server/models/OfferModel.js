@@ -1,26 +1,26 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Etudiants from "./EtudiantModel.js";
+import Students from "./StudentModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Offres = db.define('Offres',{
+const offers = db.define('offers',{
     titre:{
         type: DataTypes.STRING
     },
-    domaine:{
+    sector:{
         type: DataTypes.STRING
     },
     type:{
         type: DataTypes.STRING
     },
-    remunere:{
+    paid:{
         type: DataTypes.BOOLEAN
     },
     description:{
         type: DataTypes.TEXT
     },
-    nbr_candidat:{
+    nbr_of_candidates:{
         type: DataTypes.INTEGER
     },
     date_debut:{
@@ -29,7 +29,7 @@ const Offres = db.define('Offres',{
     date_fin:{
         type: DataTypes.DATE
     },
-    etat:{
+    state:{
         type: DataTypes.BOOLEAN
     },
 },
@@ -41,14 +41,14 @@ const Offres = db.define('Offres',{
 });
 
 
-Offres.belongsToMany(Etudiants, { through: 'Demandes' },{
+offers.belongsToMany(Students, { through: 'Demandes' },{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
-  });
+});
 
 
 (async () => {
     await db.sync();
 })();
 
-export default Offres;
+export default offers;

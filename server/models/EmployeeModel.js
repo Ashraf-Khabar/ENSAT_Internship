@@ -1,21 +1,21 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Offres from "./OffreModel.js";
+import offers from "./offerModel.js";
 import Users from "./UserModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Employeurs = db.define('Employeurs',{
+const Employees = db.define('Employees',{
     denomination:{
         type: DataTypes.STRING
     },
-    forme_juridique:{
+    legal_status:{
         type: DataTypes.ENUM('SA','SAS','SARL','GIE','SNC','SCS','SCA')
     },
-    secteur_activite:{
+    industry:{
         type: DataTypes.STRING
     },
-    ville:{
+    city:{
         type: DataTypes.STRING
     },
     RC:{
@@ -24,29 +24,21 @@ const Employeurs = db.define('Employeurs',{
     ICE:{
         type: DataTypes.STRING
     },
-    nombre_employes:{
+    nbr_employees:{
         type: DataTypes.ENUM('1-10','11-50','51-100','101-250','251-499','500+','unknown')
     },
-    prenom:{
+    name:{
         type: DataTypes.STRING
     },
-    nom:{
-        type: DataTypes.STRING
-    },
-    
     phone:{
         type: DataTypes.STRING
     },
-    laureat:{
+    laureate:{
         type: DataTypes.BOOLEAN
     },
-
     UserId:{
         type: DataTypes.INTEGER
     }
-
-
-
 },
 { 
     timestamps: false 
@@ -55,7 +47,7 @@ const Employeurs = db.define('Employeurs',{
     freezeTableName:true
 });
 
-Employeurs.hasMany(Offres,{
+Employees.hasMany(offers,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
   });
@@ -64,4 +56,4 @@ Employeurs.hasMany(Offres,{
     await db.sync();
 })();
 
-export default Employeurs;
+export default Employees;

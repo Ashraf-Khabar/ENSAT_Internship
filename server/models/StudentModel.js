@@ -1,24 +1,21 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Demandes from "./DemandeModel.js";
-import Offres from "./OffreModel.js";
+import Applications from "./ApplicationModel.js";
+import offers from "./offerModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Etudiants = db.define('Etudiants',{
-    nom:{
-        type: DataTypes.STRING
-    },
-    prenom:{
+const Students = db.define('Students',{
+    name:{
         type: DataTypes.STRING
     },
     CIN:{
         type: DataTypes.STRING
     },
-    adresse:{
+    address:{
         type: DataTypes.TEXT
     },
-    filliere:{
+    branch:{
         type: DataTypes.STRING
     },
     code_apogee:{
@@ -44,4 +41,4 @@ const Etudiants = db.define('Etudiants',{
     await db.sync();
 })();
 
-export default Etudiants;
+export default Students;

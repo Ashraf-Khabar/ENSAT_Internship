@@ -3,18 +3,16 @@ import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Demandes = db.define('Demandes',{
+const Applications = db.define('application',{
     CV:{
         type: DataTypes.STRING
     },
-    lettre_motivation:{
+    cover_letter:{
         type: DataTypes.STRING
     },
     rang:{
         type: DataTypes.INTEGER
     },
-
-    
 },
 {
     freezeTableName:true
@@ -25,4 +23,4 @@ const Demandes = db.define('Demandes',{
     await db.sync();
 })();
 
-export default Demandes;
+export default Applications;
