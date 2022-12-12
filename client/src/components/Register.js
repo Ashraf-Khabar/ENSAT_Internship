@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
 
 const Register = () => {
@@ -8,6 +8,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
+    const [role, setRole] = useState('');
     const history = useHistory();
 
     const Register = async (e) => {
@@ -17,8 +18,11 @@ const Register = () => {
                 name: name,
                 email: email,
                 password: password,
-                confPassword: confPassword
+                confPassword: confPassword,
+                role: role
             });
+            console.log(role);
+            console.log(name);
             toast.success("Register successful");
             history.push("/login");
         } catch (error) {
@@ -45,12 +49,19 @@ const Register = () => {
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"
+                                <input onChange={(e) => setPassword(e.target.value)} type="password"
+                                       placeholder="Password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setConfPassword(e.target.value)} type="password" placeholder="Repeat password"
+                                <input onChange={(e) => setConfPassword(e.target.value)} type="password"
+                                       placeholder="Repeat password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <select onChange={(e) => setRole(e.target.value)}
+                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
+                                    <option value="Student">Student</option>
+                                    <option value="Employee">Employee</option>
+                                </select>
                                 <input value="Register" type="submit"
-                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"/>
+                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"/>
 
                                 <div className="flex justify-center items-center">
                                     <span className="w-full border border-black"></span>

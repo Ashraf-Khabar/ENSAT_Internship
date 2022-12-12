@@ -78,7 +78,7 @@ const Login = ({setUserId}) => {
                                 <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
                                 <input type="submit" value="Login"
-                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"/>
+                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"/>
                                 <div className="flex justify-center items-center">
                                     <span className="w-full border border-black"></span>
                                     <span className="px-4">Or</span>
