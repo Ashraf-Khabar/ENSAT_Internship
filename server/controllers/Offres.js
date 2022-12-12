@@ -1,6 +1,8 @@
 import Offres from "../models/OffreModel";
 
 // A confirmer le syntax dee create & update
+
+/* Post API : Create offer */
 export const createOffre = async (req, res) => {
   const newOffre = new Offres(req.body);
 
@@ -12,6 +14,7 @@ export const createOffre = async (req, res) => {
   }
 };
 
+/*Get API : get All offer (select *) */
 export const getOffres = async (req, res) => {
     try {
       const Offre = await Offres.findAll({
@@ -25,12 +28,12 @@ export const getOffres = async (req, res) => {
     }
 }
 
-export const getOffre = async (req, res) => { 
+/*Get offer based on id : */
+export const getOffre = async (req, res) => {
     try {
       const Offre = await Offres.findByPk({
         where: {
           id:req.body.id
-
         }
       });
       res.status(200).json(Offre);
@@ -39,19 +42,20 @@ export const getOffre = async (req, res) => {
     }
 }
 
+/*Get API : get offer by id of employee*/
 export const getOffrebyEmployer = async (req, res) => { 
   try {
     const { count, rows } = await Offres.findAndCountAll({
       where: {
         EmployeurId: req.body.id
       }
-
     });
     res.status(200).json(count,rows);
   } catch (err) {
     next(err);
   }
 }
+
 
 export const deleteOffre = async (req, res) => {
   try {
