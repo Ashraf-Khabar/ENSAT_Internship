@@ -17,6 +17,9 @@ const Users = db.define('Users',{
     },
     refresh_token:{
         type: DataTypes.TEXT
+    },
+    role:{
+        type: DataTypes.STRING
     }
 },
 {

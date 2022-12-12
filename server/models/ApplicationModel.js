@@ -3,7 +3,7 @@ import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Applications = db.define('application',{
+const Applications = db.define('applications',{
     CV:{
         type: DataTypes.STRING
     },
@@ -17,7 +17,6 @@ const Applications = db.define('application',{
 {
     freezeTableName:true
 });
-
 
 (async () => {
     await db.sync();

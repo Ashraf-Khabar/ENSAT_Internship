@@ -41,7 +41,7 @@ const offers = db.define('offers',{
 });
 
 
-offers.belongsToMany(Students, { through: 'Demandes' },{
+offers.belongsToMany(Students, { through: 'Applications' },{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
