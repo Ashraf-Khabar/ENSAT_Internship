@@ -6,7 +6,7 @@ export const createOffre = async (req, res) => {
 
   try {
     const savedOffre = await newOffre.save();
-    res.status(200).json(savedOffre);
+    res.status(200).json({msg:"Offer created"});
   } catch (err) {
     next(err);
   }
@@ -78,7 +78,7 @@ export const updateOffre = async (req, res) => {
         }
       }
     );
-    res.status(200).json(updatedOffre);
+    res.status(200).json(updatedOffre,{msg:"Offer updated"});
   } catch (err) {
     next(err);
   }
