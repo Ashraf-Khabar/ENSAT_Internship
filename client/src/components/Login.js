@@ -48,7 +48,7 @@ const Login = ({setUserId}) => {
                             </Link>
                         </button>
                     </div>
-                    <p className="font-medium">© 2022 Company</p>
+                    <p className="font-medium">© 2022 ENSAT</p>
                 </div>
 
                 <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
@@ -58,10 +58,10 @@ const Login = ({setUserId}) => {
                         </div>
                         <div className="flex items-center space-x-2">
                             <span>Not a member? </span>
-                            <a href="client/src/components/Login#"
+                            <Link to="/register"
                                className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">
                                 Sign up now
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

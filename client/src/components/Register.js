@@ -8,7 +8,7 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
-    const [role, setRole] = useState('');
+    const [role, setRole] = useState('Student');
     const history = useHistory();
 
     const Register = async (e) => {
@@ -21,8 +21,6 @@ const Register = () => {
                 confPassword: confPassword,
                 role: role
             });
-            console.log(role);
-            console.log(name);
             toast.success("Register successful");
             history.push("/login");
         } catch (error) {
