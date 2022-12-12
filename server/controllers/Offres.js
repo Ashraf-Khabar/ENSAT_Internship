@@ -46,7 +46,8 @@ export const getOffrebyEmployer = async (req, res) => {
         EmployeurId: req.body.id
       }
 
-    });tatus(200).json(count,rows);
+    });
+    res.status(200).json(count,rows);
   } catch (err) {
     next(err);
   }
@@ -71,11 +72,8 @@ export const updateOffre = async (req, res) => {
     const updatedOffre = await Offres.update(
       
       { $set: req.body },
-     
        {
-        where: {
-          id: req.params.id
-        }
+        where: {id: req.params.id}
       }
     );
     res.status(200).json(updatedOffre,{msg:"Offer updated"});
