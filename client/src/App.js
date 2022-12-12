@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
-import Profile from "./components/Profile";
+import Profile from "./components/dashboardComponents/Profile";
 
 function App() {
     const [userId, setUserId] = useState(null);

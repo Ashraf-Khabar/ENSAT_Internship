@@ -5,10 +5,13 @@ import jwt_decode from "jwt-decode";
 import appLogo from "../img/appLogo.png";
 import { toast } from 'react-toastify';
 
+/* iseState variable as a parameter in order to store the user ID : */
 const Navbar = ({userId, setUserId}) => {
+    /* Here we make the useStates variables :  */
     const history = useHistory();
-
     const [navbar, setNavbar] = useState(false);
+
+    /* Function of logout : */
     const Logout = async () => {
         if(window.confirm("Are you sure you want to Log out : ")){
             try {
