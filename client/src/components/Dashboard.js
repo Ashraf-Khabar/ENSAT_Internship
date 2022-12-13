@@ -124,11 +124,8 @@ const Dashboard = () => {
                         </div>
                     </nav>
                 </div>
-
-
-
                 <div
-                    className="scrollable-container items-center justify-center w-full mx-auto bg-white rounded-lg shadow dark:bg-gray-800">
+                    className="overflow-y: scroll items-center justify-center mx-auto bg-white rounded-lg shadow dark:bg-gray-800">
                     <ul className="flex flex-col divide-y divide">
                         <li className="flex flex-row">
                             <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
