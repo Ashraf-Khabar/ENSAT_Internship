@@ -10,6 +10,7 @@ import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
 import Profile from "./components/dashboardComponents/Profile";
+import Offers from "./components/dashboardComponents/Offers";
 
 function App() {
     const [userId, setUserId] = useState(null);
@@ -58,6 +59,10 @@ function App() {
                       </Route>
                       <Route path="/dashboard/profile">
                           <Profile/>
+                      </Route>
+
+                      <Route path="/dashboard/offers">
+                          <Offers/>
                       </Route>
                       <Route path="*">
                           <Page_404/>

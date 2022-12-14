@@ -1,10 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
+import Employers from "./EmployerModel.js";
 import Students from "./StudentModel.js";
 
 const { DataTypes } = Sequelize;
 
-const offers = db.define('offers',{
+const Offers = db.define('Offers',{
     titre:{
         type: DataTypes.STRING
     },
@@ -32,6 +33,7 @@ const offers = db.define('offers',{
     state:{
         type: DataTypes.BOOLEAN
     },
+
 },
 {
     timestamps:false
@@ -41,14 +43,15 @@ const offers = db.define('offers',{
 });
 
 
-offers.belongsToMany(Students, { through: 'Applications' },{
+Offers.belongsToMany(Students, { through: 'Applications' },{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+
 
 
 (async () => {
     await db.sync();
 })();
 
-export default offers;
+export default Offers;

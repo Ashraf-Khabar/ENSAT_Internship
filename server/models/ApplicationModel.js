@@ -3,7 +3,7 @@ import db from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-const Applications = db.define('applications',{
+const Applications = db.define('Applications',{
     CV:{
         type: DataTypes.STRING
     },

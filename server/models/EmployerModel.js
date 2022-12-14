@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import offers from "./offerModel.js";
+import Offers from "./offerModel.js";
 import Users from "./UserModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Employers = db.define('Employees',{
+const Employers = db.define('Employers',{
     denomination:{
         type: DataTypes.STRING
     },
@@ -36,9 +36,7 @@ const Employers = db.define('Employees',{
     laureate:{
         type: DataTypes.BOOLEAN
     },
-    UserId:{
-        type: DataTypes.INTEGER
-    }
+
 },
 { 
     timestamps: false 
@@ -47,7 +45,12 @@ const Employers = db.define('Employees',{
     freezeTableName:true
 });
 
-Employers.hasMany(offers,{
+Employers.hasMany(Offers,{
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  });
+
+  Offers.belongsTo(Employers,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
   });

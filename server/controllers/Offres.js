@@ -1,5 +1,5 @@
+import Employers from "../models/EmployerModel.js";
 import offers from "../models/offerModel.js";
-import Employees from "../models/EmployerModel.js";
 
 /* Post API : Create offer */
 export const createOffer = async (req, res) => {
@@ -16,14 +16,10 @@ export const createOffer = async (req, res) => {
 /*Get API : get All offer (select *) */
 export const getOffers = async (req, res) => {
     try {
-      const Offers = await offers.findAll({
-        where: {
-          state: 1
-        }
-      });
+      const Offers = await offers.findAll({ include:Employers  });
       res.status(200).json(Offers);
     } catch (err) {
-      next(err);
+      console.log(err);
     }
 }
 
@@ -46,7 +42,7 @@ export const getOfferByEmployer = async (req, res) => {
   try {
     const { count, rows } = await offers.findAndCountAll({
       where: {
-        EmployeeIds: req.body.id
+        EmployerId: req.body.id
       }
     });
     res.status(200).json(count,rows);
