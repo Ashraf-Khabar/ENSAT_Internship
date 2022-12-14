@@ -1,5 +1,5 @@
 import offers from "../models/offerModel.js";
-import Employees from "../models/EmployeeModel.js";
+import Employees from "../models/EmployerModel.js";
 
 /* Post API : Create offer */
 export const createOffer = async (req, res) => {

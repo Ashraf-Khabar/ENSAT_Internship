@@ -5,7 +5,7 @@ import Users from "./UserModel.js";
 
 const { DataTypes } = Sequelize;
 
-const Employees = db.define('Employees',{
+const Employers = db.define('Employees',{
     denomination:{
         type: DataTypes.STRING
     },
@@ -47,7 +47,7 @@ const Employees = db.define('Employees',{
     freezeTableName:true
 });
 
-Employees.hasMany(offers,{
+Employers.hasMany(offers,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
   });
@@ -56,4 +56,4 @@ Employees.hasMany(offers,{
     await db.sync();
 })();
 
-export default Employees;
+export default Employers;

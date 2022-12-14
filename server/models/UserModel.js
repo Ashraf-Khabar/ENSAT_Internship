@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Employees from "./EmployeeModel.js";
+import Employees from "./EmployerModel.js";
 import Students from "./StudentModel.js";
 
 const { DataTypes } = Sequelize;
