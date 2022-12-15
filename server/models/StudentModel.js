@@ -10,7 +10,8 @@ const Students = db.define('Students',{
         type: DataTypes.STRING
     },
     CIN:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     address:{
         type: DataTypes.TEXT
@@ -19,12 +20,13 @@ const Students = db.define('Students',{
         type: DataTypes.STRING
     },
     code_apogee:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     phone:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
-    
 },
 { 
     timestamps: false 
@@ -32,10 +34,6 @@ const Students = db.define('Students',{
 {
     freezeTableName:true
 });
-
-
-
-
 
 (async () => {
     await db.sync();

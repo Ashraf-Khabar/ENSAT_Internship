@@ -31,7 +31,8 @@ const Employers = db.define('Employers',{
         type: DataTypes.STRING
     },
     phone:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     laureate:{
         type: DataTypes.BOOLEAN
@@ -44,6 +45,7 @@ const Employers = db.define('Employers',{
 {
     freezeTableName:true
 });
+
 
 Employers.hasMany(Offers,{
     onDelete: 'CASCADE',

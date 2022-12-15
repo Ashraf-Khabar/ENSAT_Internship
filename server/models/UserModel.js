@@ -10,7 +10,8 @@ const Users = db.define('Users',{
         type: DataTypes.STRING
     },
     email:{
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     password:{
         type: DataTypes.STRING
@@ -30,18 +31,25 @@ const Users = db.define('Users',{
     freezeTableName:true
 });
 
-Users.hasOne(Employers,{
+Users.belongsTo(Employers,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 
-
-Users.hasOne(Students,{
+Users.belongsTo(Students,{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 
+Students.hasOne(Users, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
+Employers.hasOne(Users, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
 (async () => {
     await db.sync();
