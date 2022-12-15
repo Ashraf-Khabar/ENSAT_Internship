@@ -26,11 +26,9 @@ const Offers = () => {
     getOffers();
   }, []);
 
-  
-
   useEffect(() => {
-    refreshToken();
-    getUsers();
+    refreshToken().then(r => console.log(r));
+    getUsers().then(r => console.log(r));
   }, []);
 
   const refreshToken = async () => {
@@ -75,7 +73,6 @@ const Offers = () => {
 
   return (
     <div className="flex ">
-      {console.log(offersList)}
       <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div className="mx-auto py-10">
           <ul>
