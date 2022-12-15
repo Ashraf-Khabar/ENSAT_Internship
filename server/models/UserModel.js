@@ -25,28 +25,21 @@ const Users = db.define('Users',{
     emailConfirmed:{
         type: DataTypes.BOOLEAN,
         default : false
+    },
+    image:{
+        type: Sequelize.BLOB
     }
 },
 {
     freezeTableName:true
 });
 
-Users.belongsTo(Employers,{
+Users.hasOne(Students, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
 
-Users.belongsTo(Students,{
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-});
-
-Students.hasOne(Users, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-});
-
-Employers.hasOne(Users, {
+Users.hasOne(Employers, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
