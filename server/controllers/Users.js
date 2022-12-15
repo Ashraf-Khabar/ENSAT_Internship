@@ -19,6 +19,8 @@ export const Register = async (req, res) => {
 
     const transporter = nodemailer.createTransport({
         service: "gmail",
+        // host: "smtp.mailtrap.io",
+        // port: 2525,
         auth: {
             user: "ashrafkhabaradm@gmail.com",
             pass: "reygamjexgfarxfm"
@@ -49,7 +51,7 @@ export const Register = async (req, res) => {
             text: `Hi ${name},
             Thank you for registering with us. Your email address is ${email}.
             Click the following link to confirm your email address:
-            http://localhost:3000/token/${emailToken}`
+            http://localhost:5000/confirmation/${emailToken}`
         };
         // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
