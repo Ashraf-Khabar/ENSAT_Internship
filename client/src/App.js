@@ -60,7 +60,6 @@ function App() {
                       <Route path="/dashboard/profile">
                           <Profile/>
                       </Route>
-
                       <Route path="/dashboard/offers">
                           <Offers/>
                       </Route>

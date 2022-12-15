@@ -38,7 +38,8 @@ export const Register = async (req, res) => {
             name: name,
             email: email,
             password: hashPassword,
-            role: role
+            role: role,
+            emailConfirmed: false
         });
         // Send a confirmation email to the user
         const mailOptions = {
@@ -46,9 +47,9 @@ export const Register = async (req, res) => {
             to: email, /* list of receivers */
             subject: 'Registration Confirmation', /* Subject line */
             text: `Hi ${name},
-        Thank you for registering with us. Your email address is ${email}.
-        Click the following link to confirm your email address:
-        http://your-site.com/confirm-email?token=${emailToken}`
+            Thank you for registering with us. Your email address is ${email}.
+            Click the following link to confirm your email address:
+            http://localhost:3000/token/${emailToken}`
         };
         // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
@@ -73,6 +74,7 @@ export const Login = async (req, res) => {
         });
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if (!match) return res.status(400).json({msg: "Wrong Password"});
+        if (!user.emailConfirmed) return res.status(400).json({ msg: "Please confirm your email address before logging in" });
         const userId = user[0].id;
         const name = user[0].name;
         const email = user[0].email;

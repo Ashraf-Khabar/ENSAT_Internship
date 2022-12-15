@@ -20,6 +20,10 @@ const Users = db.define('Users',{
     },
     role:{
         type: DataTypes.STRING
+    },
+    emailConfirmed:{
+        type: DataTypes.BOOLEAN,
+        default : false
     }
 },
 {
