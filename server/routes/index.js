@@ -12,6 +12,7 @@ router.post('/login', Login);
 router.get('/token', refreshToken);
 router.delete('/logout', Logout);
 
-// Offers routes
+/* Offers routes */
 router.get('/offers',  getOffers);
+
 export default router;

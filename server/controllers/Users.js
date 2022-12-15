@@ -1,6 +1,7 @@
 import Users from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
 
 export const getUsers = async (req, res) => {
     try {
@@ -15,6 +16,14 @@ export const getUsers = async (req, res) => {
 
 export const Register = async (req, res) => {
     const {name, email, password, confPassword, role} = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "ashrafkhabaradm@gmail.com",
+            pass: "reygamjexgfarxfm"
+        }
+    });
 
     const emailToken = jwt.sign({
         email: email,
@@ -39,8 +48,7 @@ export const Register = async (req, res) => {
             text: `Hi ${name},
         Thank you for registering with us. Your email address is ${email}.
         Click the following link to confirm your email address:
-        http://your-site.com/confirm-email?token=${emailToken}
-      `
+        http://your-site.com/confirm-email?token=${emailToken}`
         };
         // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
