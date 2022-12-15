@@ -51,7 +51,7 @@ export const Register = async (req, res) => {
             text: `Hi ${name},
             Thank you for registering with us. Your email address is ${email}.
             Click the following link to confirm your email address:
-            http://localhost:5000/confirmation/${emailToken}`
+            http://localhost:5000/confirmation/${email}`
         };
         // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
