@@ -47,13 +47,14 @@ const Navbar = ({userId, setUserId}) => {
     }, [userId]);
     
     return (
-        <nav className="w-full bg-white shadow">
+        <nav className="w-full h-25 bg-white shadow">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
-                    <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                    <div className="flex items-center justify-between py-2 md:py-4 md:block">
                         <Link to="/">
-                            <img src={appLogo} style={{ width: '65px', height: 'px' }}  alt="logo"/>
+                            <img src={appLogo} style={{ width: '100px', height: 'px' }}  alt="logo"/> 
                         </Link>
+    
                         <div className="md:hidden">
                             <button
                                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -100,21 +101,21 @@ const Navbar = ({userId, setUserId}) => {
                     >
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                             { userId ? <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/dashboard" >Home</Link>
+                                    <Link className="py-2 px-4  bg-white-600 hover:bg-white-700 focus:ring-white-500 focus:ring-offset-white-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/dashboard" >Home</Link>
                                 </li> :
                                 <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/" >Home</Link>
+                                    <Link className="py-2 px-4  bg-white-600 hover:bg-white-700 focus:ring-white-500 focus:ring-offset-white-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/" >Home</Link>
                                 </li>
                             }
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"  to="/about-us">About US</Link>
+                                <Link className="py-2 px-4  bg-white-600 hover:bg-white-700 focus:ring-white-500 focus:ring-offset-white-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"  to="/about-us">About US</Link>
                             </li>
 
                             { userId ? <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" onClick={Logout} >Log out</Link>
+                                <Link className="py-2 px-4  bg-white-600 hover:bg-white-700 focus:ring-white-500 focus:ring-offset-white-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" onClick={Logout} >Log out</Link>
                             </li> :
                             <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/login" >Log in</Link>
+                                    <Link className="py-2 px-4  bg-white-600 hover:bg-white-700 focus:ring-white-500 focus:ring-offset-white-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/login" >Log in</Link>
                             </li>
                             }
                         </ul>

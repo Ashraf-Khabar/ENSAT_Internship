@@ -1,4 +1,4 @@
-
+/* 
 .App {
   text-align: center;
 }
@@ -144,7 +144,7 @@
 }
 
 /* Custom style */
-.header-right {
+/* .header-right {
   width: calc(100% - 3.5rem);
 }
 .sidebar:hover {
@@ -154,4 +154,4 @@
   .header-right {
     width: calc(100% - 16rem);
   }
-}
+} */ 

@@ -42,7 +42,7 @@ function App() {
       <Router>
           <div className="App">
               <ToastContainer position="top-center"/>
-              <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
+              <div className="relative h-screen overflow-auto  opacity-93">
                   <Navbar userId={userId} setUserId={setUserId}/>
                   <Switch>
                       <Route exact path="/">
