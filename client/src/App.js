@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
 import Profile from "./components/dashboardComponents/Profile";
 import Offers from "./components/dashboardComponents/Offers";
+import Offer from "./components/dashboardComponents/Offre";
 
 function App() {
     const [userId, setUserId] = useState(null);
@@ -42,7 +43,7 @@ function App() {
       <Router>
           <div className="App">
               <ToastContainer position="top-center"/>
-              <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
+              <div className="relative h-screen overflow-auto bg-yellow-100 opacity-93">
                   <Navbar userId={userId} setUserId={setUserId}/>
                   <Switch>
                       <Route exact path="/">
@@ -64,6 +65,11 @@ function App() {
                       <Route path="/dashboard/offers">
                           <Offers/>
                       </Route>
+
+                      <Route path="/dashboard/offer/:id" component = {Offer} /> 
+                         
+                      
+                      
                       <Route path="*">
                           <Page_404/>
                       </Route>
