@@ -17,6 +17,11 @@ export const getUsers = async (req, res) => {
 export const Register = async (req, res) => {
     const {name, email, password, confPassword, role} = req.body;
 
+    const existingUser = await Users.findOne({ where: { email: email } });
+    if (existingUser) {
+        return res.status(400).json({ msg: "Email is already in use" });
+    }
+
     const transporter = nodemailer.createTransport({
         service: "gmail",
         // host: "smtp.mailtrap.io",
@@ -76,7 +81,7 @@ export const Login = async (req, res) => {
         });
         const match = await bcrypt.compare(req.body.password, user[0].password);
         if (!match) return res.status(400).json({msg: "Wrong Password"});
-        if (!user.emailConfirmed) return res.status(400).json({ msg: "Please confirm your email address before logging in" });
+        if (!user[0].emailConfirmed) return res.status(400).json({ msg: "Please confirm your email address before logging in" });
         const userId = user[0].id;
         const name = user[0].name;
         const email = user[0].email;

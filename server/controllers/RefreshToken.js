@@ -30,38 +30,18 @@ export const refreshToken = async (req, res) => {
 // Retrieve token from route and find user with matching refresh token
 export const emailVerification = async (req, res) => {
     try {
-        const refreshToken = req.params.token;
-        if (!refreshToken) return res.sendStatus(401);
-        const user = await Users.findAll({
-            where: {
-                refresh_token: refreshToken
+        const email = req.params.email;
+        await Users.update(
+            {
+                emailConfirmed: true,
+            },
+            {
+                where: { email: email },
             }
-        });
-        if (!user[0]) return res.sendStatus(403);
-
-        // Verify token and create new JWT
-        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-            if (err) return res.sendStatus(403);
-            const email = user[0].email;
-            const accessToken = jwt.sign({email}, process.env.ACCESS_TOKEN_SECRET, {
-                expiresIn: '15s'
-            });
-
-            // Update user record in database
-            Users.update(
-                {
-                    emailConfirmed: true,
-                },
-                {
-                    where: { refresh_token: refreshToken },
-                }
-            );
-
-            // Return new JWT in response
-            res.json({accessToken});
-        });
-    } catch (error) {
-        console.log(error);
+        );
+        res.status(200).json({ message: 'Email confirmation successful!' });
+    }catch (err) {
+        res.status(401).json({err});
     }
 };
 
