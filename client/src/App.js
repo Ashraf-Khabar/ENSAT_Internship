@@ -13,6 +13,7 @@ import Profile from "./components/dashboardComponents/Profile";
 import Offers from "./components/dashboardComponents/Offers";
 import Dashboardemp from "./components/dashboardemp";
 import Myoffers from "./components/dashboardComponents/Myoffers";
+import Addoffer from "./components/Addoffer";
 function App() {
     const [userId, setUserId] = useState(null);
 
@@ -66,6 +67,9 @@ function App() {
                       </Route>
                       <Route path="/dashboardemp/Myoffers">
                           <Myoffers/>
+                      </Route>
+                      <Route path="/dashboardemp/Addoffer">
+                          <Addoffer/>
                       </Route>
                       <Route path="/dashboard/offers">
                           <Offers/>
