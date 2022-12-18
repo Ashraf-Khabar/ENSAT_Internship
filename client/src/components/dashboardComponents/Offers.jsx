@@ -192,11 +192,16 @@ const Offers = () => {
                   <div className="text-sm text-gray-600 dark:text-gray-200" >
                  {offer.Employer.denomination}
       
+                  <div className="font-medium dark:text-white" > {offer.titre}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-200" >
+                 {offer.Employer.denomination}
+      
                   </div>
                 </div>
                 <div className="text-xs text-gray-600 dark:text-gray-200">
                 {  formatDate_fin}
                 </div>
+              </div>
               </div>
             </Link>
            

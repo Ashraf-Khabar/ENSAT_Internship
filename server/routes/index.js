@@ -3,13 +3,6 @@ import { getUsers, Register, Login, Logout } from "../controllers/Users.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
 import { getOffer, getOffers } from "../controllers/Offres.js";
-import cors from "cors";
-
-
-const app = express()
-
-app.use(cors());
-app.use(express.json());
 
 const router = express.Router();
 
