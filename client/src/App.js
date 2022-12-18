@@ -12,8 +12,8 @@ import {useState} from "react";
 import Profile from "./components/dashboardComponents/Profile";
 import Offers from "./components/dashboardComponents/Offers";
 import Dashboardemp from "./components/dashboardemp";
-import Myoffers from "./components/dashboardComponents/Myoffers";
-import Addoffer from "./components/Addoffer";
+import Myoffers from "./components/dashboardComponents/employer/Myoffers";
+import Addoffer from "./components/dashboardComponents/employer/Addoffer";
 function App() {
     const [userId, setUserId] = useState(null);
 
