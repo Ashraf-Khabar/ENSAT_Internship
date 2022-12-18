@@ -1,17 +1,37 @@
 import Employers from "../models/EmployerModel.js";
-import offers from "../models/offerModel.js";
+import Offers from "../models/offerModel.js";
 
 /* Post API : Create offer */
-export const createOffer = async (req, res) => {
-  const newOffer = new offers(req.body);
+// export const createOffer = async (req, res) => {
+//   const newOffer = new offers(req.body);
 
+//   try {
+//     const savedOffer = await newOffer.save();
+//     res.status(200).json({msg:"Offer created"});
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+export const Addoffer = async(req, res) => {
+  const { titre, sector,type,paid,description,nbr_of_candidates,date_debut,date_fin,state} = req.body;
   try {
-    const savedOffer = await newOffer.save();
-    res.status(200).json({msg:"Offer created"});
-  } catch (err) {
-    next(err);
+      await Offers.create({
+        titre: titre,
+        sector: sector,
+        type: type,
+        paid:paid,
+        description:description,
+        nbr_of_candidates: nbrcand,
+        date_debut: datedebut,
+        date_fin: datefin,
+        state: state
+      });
+      res.json({msg: "Added Successfully"});
+  } catch (error) {
+      console.log(error);
   }
-};
+}
 
 /*Get API : get All offer (select *) */
 export const getOffers = async (req, res) => {
