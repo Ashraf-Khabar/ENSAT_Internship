@@ -15,7 +15,11 @@ import Offers from "../models/offerModel.js";
 
 export const Addoffer = async(req, res) => {
   const { titre, sector,type,paid,description,nbr_of_candidates,date_debut,date_fin,state} = req.body;
+ 
+
   try {
+      const employer = await Employers.findOne({where: { userId: req.body.id }} );
+ 
       await Offers.create({
         titre: titre,
         sector: sector,
@@ -25,7 +29,8 @@ export const Addoffer = async(req, res) => {
         nbr_of_candidates: nbr_of_candidates,
         date_debut: date_debut,
         date_fin: date_fin,
-        state: state
+        state: state,
+        EmployerId : employer.id
       });
       res.json({msg: "Added Successfully"});
   } catch (error) {

@@ -1,18 +1,25 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {Link,useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
+import jwt_decode from "jwt-decode";
 import Dashboardemp from './dashboardemp';
+
 const Addoffer = () => {
     const [titre, setTitre] = useState('');
     const [sector, setSector] = useState('IT');
     const [type, setType] = useState('PFE');
     const [paid, setPaid] = useState('');
+    const [id,setId] =useState('')
     const [description, setDescription] = useState('');
     const [nbr_of_candidates, setNbrcand] = useState('');
     const [date_debut, setDatedebut] = useState('');
     const [date_fin, setDatefin] = useState('');
     const [state, setState] = useState('true');
+    const [name, setName] = useState("");
+    const [token, setToken] = useState("");
+    const [expire, setExpire] = useState("");
+
     const history = useHistory();
 
     
@@ -28,7 +35,8 @@ const Addoffer = () => {
                 nbr_of_candidates: nbr_of_candidates,
                 date_debut: date_debut,
                 date_fin: date_fin,
-                state: state
+                state: state,
+                id:id
             });
             toast.success("Added successfully");
             history.push("/dashboardemp");
@@ -38,6 +46,27 @@ const Addoffer = () => {
             }
         }
     }
+    useEffect(() => {
+        refreshToken();
+    }, []);
+    
+
+
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/token');
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setName(decoded.name);
+            setId(decoded.userId)
+            setExpire(decoded.exp);
+        } catch (error) {
+            if (error.response) {
+                history.push("/");
+            }
+        }
+    }
+
 
     return (  
 
@@ -45,6 +74,7 @@ const Addoffer = () => {
     <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div  className="mx-auto py-10 ">
             <ul>
+                {console.log ( id )}
                 <li 
                       className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] focus:text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
