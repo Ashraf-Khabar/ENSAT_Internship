@@ -14,6 +14,8 @@ const Offers = () => {
   const [expire, setExpire] = useState("");
   const [users, setUsers] = useState([]);
   const history = useHistory();
+  const [active, setActive] = useState(false);
+
   const [offersList, setOffersList] = useState([]);
   const formatDate_fin = Moment(offersList.date_fin).format("MMM Do YYYY"); // change the date format to jan 1th 2022
 
@@ -25,6 +27,11 @@ const Offers = () => {
       setOffersList(response.data);
     });
   };
+
+  useEffect(() => {
+    getOffers();
+  }, []);
+
   
   // add getoffers to useeffect to display automatically the list without button....
   useEffect(() => {
@@ -59,7 +66,7 @@ const Offers = () => {
 
   return (
     <div className="flex ">
-      
+      {console.log(offersList)}
       <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div className="mx-auto py-10">
           <ul>
@@ -192,16 +199,11 @@ const Offers = () => {
                   <div className="text-sm text-gray-600 dark:text-gray-200" >
                  {offer.Employer.denomination}
       
-                  <div className="font-medium dark:text-white" > {offer.titre}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-200" >
-                 {offer.Employer.denomination}
-      
                   </div>
                 </div>
                 <div className="text-xs text-gray-600 dark:text-gray-200">
                 {  formatDate_fin}
                 </div>
-              </div>
               </div>
             </Link>
            
