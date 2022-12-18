@@ -187,14 +187,14 @@ const Offer = () => {
                 <div className="ml-20 pb-8 text-start grid  grid-rows-6 grid-flow-col text-base font-sans ">
                   <div className="font-bold	text-lg	">Internship Informations :</div>
                   <div className="font-semibold">Type : {offer.type}</div>
-                  <div className="font-semibold">City : {offer.Employer.city} </div>
+                  <div className="font-semibold">City : {offer.city} </div>
                   <div className="font-semibold">Paid : {offer.paid  ? "Yes" : "No"}</div>
                   <div className="font-semibold">Candidats : {offer.nbr_of_candidates}</div>
                   <div className="font-semibold">Deadline : {formatDate_fin}</div>
                   <div className="font-bold text-lg	">Company Informations :</div>
-                  <div className="font-semibold">Denomination : {offer.Employer.denomination}</div>
-                  <div className="font-semibold">Sector : {offer.Employer.industry}</div>
-                  <div className="font-semibold">Number of Employees : {offer.Employer.nbr_employees}</div>
+                  <div className="font-semibold">Denomination : {offer.denomination}</div>
+                  <div className="font-semibold">Sector : {offer.industry}</div>
+                  <div className="font-semibold">Number of Employees : {offer.nbr_employees}</div>
                   
 
 
