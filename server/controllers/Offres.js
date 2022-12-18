@@ -1,5 +1,12 @@
 import Employers from "../models/EmployerModel.js";
 import offers from "../models/offerModel.js";
+import express from "express";
+import cors from "cors";
+
+const app = express()
+
+app.use(cors());
+app.use(express.json());
 
 /* Post API : Create offer */
 export const createOffer = async (req, res) => {
@@ -13,7 +20,7 @@ export const createOffer = async (req, res) => {
   }
 };
 
-/*Get API : get All offer (select *) */
+/*Get API : get All offers+employers (select * offers join employers) */
 export const getOffers = async (req, res) => {
     try {
       const Offers = await offers.findAll({ include:Employers  });
@@ -23,17 +30,15 @@ export const getOffers = async (req, res) => {
     }
 }
 
-/*Get offer based on id : */
+/*Get offer join employer based on id : */
 export const getOffer = async (req, res) => {
     try {
-      const Offer= await offers.findByPk({
-        where: {
-          id:req.body.id
-        }
-      });
+      const Offer= await offers.findOne({ where: { id: req.body.id }, include:Employers  }
+        );
       res.status(200).json(Offer);
     } catch (err) {
-      next(err);
+      
+      console.log(err +"I CANT INCLUDE");
     }
 }
 

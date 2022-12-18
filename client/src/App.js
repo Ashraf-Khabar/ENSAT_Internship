@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
 import Profile from "./components/dashboardComponents/Profile";
 import Offers from "./components/dashboardComponents/Offers";
-import Offer from "./components/dashboardComponents/Offre";
+import Offer from "./components/dashboardComponents/Offer";
 
 function App() {
     const [userId, setUserId] = useState(null);

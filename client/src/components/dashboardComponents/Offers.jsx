@@ -5,6 +5,8 @@ import jwt_decode from "jwt-decode";
 import { Link, useHistory } from "react-router-dom";
 import "tailwindcss/base.css";
 import "tailwindcss/components.css";
+import Moment from 'moment';
+
 
 const Offers = () => {
   const [name, setName] = useState("");
@@ -12,31 +14,23 @@ const Offers = () => {
   const [expire, setExpire] = useState("");
   const [users, setUsers] = useState([]);
   const history = useHistory();
-
-  const [active, setActive] = useState(false);
   const [offersList, setOffersList] = useState([]);
+  const formatDate_fin = Moment(offersList.date_fin).format("MMM Do YYYY"); // change the date format to jan 1th 2022
 
+
+
+  //appel de api to get all offers and their employers
   const getOffers = () => {
     Axios.get("http://localhost:5000/offers").then((response) => {
       setOffersList(response.data);
     });
   };
-
-//  const navigateOffre = (id) => {
-    // 👇️ navigate to /contacts
- //   let u="/dashboard/offer"+id
-  //  history.push(u)
-  //};
-
-  useEffect(() => {
-    getOffers();
-  }, []);
-
   
-
+  // add getoffers to useeffect to display automatically the list without button....
   useEffect(() => {
     refreshToken();
     getUsers();
+    getOffers();
   }, []);
 
   const refreshToken = async () => {
@@ -54,22 +48,6 @@ const Offers = () => {
   };
 
   const axiosJWT = Axios.create();
-
-  // axiosJWT.interceptors.request.use(async (config) => {
-  //     const currentDate = new Date();
-  //     if (expire * 1000 < currentDate.getTime()) {
-  //         const response = await axios.get('http://localhost:5000/token');
-  //         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-  //         setToken(response.data.accessToken);
-  //         const decoded = jwt_decode(response.data.accessToken);
-  //         setName(decoded.name);
-  //         setExpire(decoded.exp);
-  //     }
-  //     return config;
-  // }, (error) => {
-  //     return Promise.reject(error);
-  // });
-
   const getUsers = async () => {
     const response = await axiosJWT.get("http://localhost:5000/users", {
       headers: {
@@ -81,7 +59,6 @@ const Offers = () => {
 
   return (
     <div className="flex ">
-      {console.log(offersList)}
       
       <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div className="mx-auto py-10">
@@ -203,6 +180,8 @@ const Offers = () => {
 
           <ul className="flex flex-col mb-2 divide-y divide">
           {offersList.map((offer,key) => (
+            // looping/Maping through every item in the list of offers
+            //the link below allow to get redirected to the offer page throught a click on its row
             <Link className="flex flex-row   hover:bg-indigo-200" to={{pathname :"/dashboard/offer/"+offer.id}}>
               <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
                 <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
@@ -216,7 +195,7 @@ const Offers = () => {
                   </div>
                 </div>
                 <div className="text-xs text-gray-600 dark:text-gray-200">
-                {  offer.date_fin}
+                {  formatDate_fin}
                 </div>
               </div>
             </Link>
