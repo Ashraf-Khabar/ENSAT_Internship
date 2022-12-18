@@ -46,7 +46,7 @@ const Addoffer = () => {
         <div  className="mx-auto py-10 ">
             <ul>
                 <li 
-                      className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] focus:text-[#EC5252] duration-150">
+                      className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] focus:text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -62,7 +62,7 @@ const Addoffer = () => {
                     </svg>
                     <Link className="font-semibold" to="/dashboardemp/Myoffers">My Offers</Link>
                 </Link>
-                <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
+                <li className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

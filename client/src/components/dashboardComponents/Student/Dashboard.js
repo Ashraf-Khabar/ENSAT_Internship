@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react'
-import axios from 'axios';
+import Axios from 'axios';
 import jwt_decode from "jwt-decode";
 import {Link, useHistory} from 'react-router-dom';
 import 'tailwindcss/base.css';
@@ -8,12 +8,26 @@ import 'tailwindcss/components.css';
 
 const Dashboard = () => {
 
-    const [name, setName] = useState('');
-    const [token, setToken] = useState('');
-    const [expire, setExpire] = useState('');
+    const [name, setName] = useState("");
+    const [token, setToken] = useState("");
+    const [expire, setExpire] = useState("");
     const [users, setUsers] = useState([]);
     const history = useHistory();
     const [active, setActive] = useState(false);
+  
+    const [offersList, setOffersList] = useState([]);
+  
+    const getOffers = () => {
+      Axios.get("http://localhost:5000/offers").then((response) => {
+        setOffersList(response.data);
+      });
+    };
+  
+    useEffect(() => {
+      getOffers();
+    }, []);
+
+   
 
     useEffect(() => {
         refreshToken();
@@ -22,7 +36,7 @@ const Dashboard = () => {
 
     const refreshToken = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/token');
+            const response = await Axios.get('http://localhost:5000/token');
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
@@ -34,7 +48,7 @@ const Dashboard = () => {
         }
     }
 
-    const axiosJWT = axios.create();
+    const axiosJWT = Axios.create();
 
     // axiosJWT.interceptors.request.use(async (config) => {
     //     const currentDate = new Date();
@@ -112,272 +126,30 @@ const Dashboard = () => {
                         </div>
                     </nav>
                 </div>
-                <div
-                    className="overflow-y: scroll items-center justify-center mx-auto bg-white rounded-lg shadow dark:bg-gray-800">
-                    <ul className="flex flex-col divide-y divide">
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
+                <div className="overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
 
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-                        <li className="flex flex-row">
-                            <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                                    <a href="#" className="relative block">
-
-                                    </a>
-                                </div>
-                                <div className="flex-1 pl-1 mr-16">
-                                    <div className="font-medium dark:text-white">
-                                        Jean Marc
-                                    </div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-200">
-                                        Developer
-                                    </div>
-                                </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-200">
-                                    6:00 AM
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
+<ul className="flex flex-col mb-2 divide-y divide">
+{offersList.map((offer) => (
+  <li className="flex flex-row   hover:bg-indigo-200">
+    <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
+      <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
+        <a href="#" className="relative block"></a>
+      </div>
+      <div className="flex-1 pl-1 mr-16">
+        <div className="font-medium dark:text-white"> {offer.titre}</div>
+        <div className="text-sm text-gray-600 dark:text-gray-200">
+     {offer.denomination}
+        </div>
+      </div>
+      <div className="text-xs text-gray-600 dark:text-gray-200">
+      {offer.date_fin}
+      </div>
+    </div>
+  </li>
+ 
+  ))}
+</ul>
+</div>
 
             </div>
         </div>

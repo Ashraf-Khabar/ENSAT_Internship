@@ -22,9 +22,9 @@ export const Addoffer = async(req, res) => {
         type: type,
         paid:paid,
         description:description,
-        nbr_of_candidates: nbrcand,
-        date_debut: datedebut,
-        date_fin: datefin,
+        nbr_of_candidates: nbr_of_candidates,
+        date_debut: date_debut,
+        date_fin: date_fin,
         state: state
       });
       res.json({msg: "Added Successfully"});
@@ -36,7 +36,7 @@ export const Addoffer = async(req, res) => {
 /*Get API : get All offer (select *) */
 export const getOffers = async (req, res) => {
     try {
-      const Offers = await offers.findAll({ include:Employers  });
+      const Offers = await Offers.findAll({ include:Employers  });
       res.status(200).json(Offers);
     } catch (err) {
       console.log(err);
@@ -46,7 +46,7 @@ export const getOffers = async (req, res) => {
 /*Get offer based on id : */
 export const getOffer = async (req, res) => {
     try {
-      const Offer= await offers.findByPk({
+      const Offer= await Offers.findByPk({
         where: {
           id:req.body.id
         }
@@ -60,7 +60,7 @@ export const getOffer = async (req, res) => {
 /*Get API : get offer by id of employee*/
 export const getOfferByEmployer = async (req, res) => {
   try {
-    const { count, rows } = await offers.findAndCountAll({
+    const { count, rows } = await Offers.findAndCountAll({
       where: {
         EmployerId: req.body.id
       }
@@ -74,7 +74,7 @@ export const getOfferByEmployer = async (req, res) => {
 /*API delete : delete offer*/
 export const deleteOffer = async (req, res) => {
   try {
-    await offers.destroy(
+    await Offers.destroy(
       {
         where: {
           id: req.params.id
@@ -89,7 +89,7 @@ export const deleteOffer = async (req, res) => {
 /*Update offer */
 export const updateOffer = async (req, res) => {
   try {
-    const updatedOffer = await offers.update(
+    const updatedOffer = await Offers.update(
       
       { $set: req.body },
        {
