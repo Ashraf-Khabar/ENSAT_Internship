@@ -10,7 +10,7 @@ const Addoffer = () => {
     const [sector, setSector] = useState('IT');
     const [type, setType] = useState('PFE');
     const [paid, setPaid] = useState('');
-    const [id,setId] =useState('')
+    const [id,setId] =useState('');
     const [description, setDescription] = useState('');
     const [nbr_of_candidates, setNbrcand] = useState('');
     const [date_debut, setDatedebut] = useState('');
