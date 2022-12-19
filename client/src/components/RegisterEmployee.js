@@ -79,14 +79,14 @@ const RegisterEmployee = () => {
                                         className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
                                     <option value="Casablanca">Casablanca</option>
                                     <option value="Tanger">Tanger</option>
-                                    <option value="Rabat">Rabat</option>
-                                    <option value="Mohammadia">Mohammadia</option>
-                                    <option value="Agadir">Agadir</option>
+                                    <option value="Rabat">Rabat</option></option>
+                                <
+                                    <option value="Mohammadia">Mohammadiaoption value="Agadir">Agadir</option>
                                 </select>
 
                                 <input onChange={(e) => setConfPassword(e.target.value)} type="text"
-                                       placeholder="RC"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                       placeholder="RC"border-2
+                                       className="flex px-3 py-2 md:px-4 md:py-3  border-black rounded-lg font-medium placeholder:font-normal"/>
 
                                 <input onChange={(e) => setConfPassword(e.target.value)} type="text"
                                        placeholder="ICE"
@@ -99,7 +99,7 @@ const RegisterEmployee = () => {
                                 <input onChange={(e) => setConfPassword(e.target.value)} type="number"
                                        placeholder="phone"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                
+
                                 <label style={{display: "flex", alignItems: "center"}}>
                                     <input type="checkbox" value="literate" onChange={(e) => SetLaureate(e.target.checked)} />
                                     <span style={{marginLeft: "10px", fontWeight: "bold"}}>laureate</span>
