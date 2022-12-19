@@ -11,7 +11,7 @@ const Offer = () => {
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
   const history = useHistory();
-  const [offer, setOffer] = useState(""); 
+  const [offer, setOffer] = useState([]); 
   const { id } = useParams(); // this function get the offer's id from url 
   const formatDate_debut = Moment(offer.date_debut).format("MMM Do YYYY"); // change the date format to jan 1th 2022 
   const formatDate_fin = Moment(offer.date_fin).format("MMM Do YYYY");
@@ -53,7 +53,9 @@ const Offer = () => {
     <div className="flex ">
       {//Console log for tests
       }
-      {console.log(offer) }
+            {console.log(offer) }
+
+      {console.log(offer.Employer) }
       <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div className="mx-auto py-10">
           <ul>
@@ -172,7 +174,10 @@ const Offer = () => {
         <div className=" overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
           <div className="container w-full md:max-w-3xl mx-auto pt-2">
             <div className="w-full px-4 md:px-2 text-xl text-gray-800 leading-normal">
+            {offer.map((offer,key) => (
+              <div>
               <h1 className="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-xl md:text-4xl">
+                
                 {offer.titre}
               </h1>
               <div className="font-sans">
@@ -184,23 +189,27 @@ const Offer = () => {
                 <p className="py-8 px-10 text-base	text-justify">
                   {offer.description}
                 </p>
-                <div className="ml-20 pb-8 text-start grid  grid-rows-6 grid-flow-col text-base font-sans ">
+                <div className="ml-20 pb-8 text-start grid  grid-rows-5 grid-flow-col text-base font-sans ">
                   <div className="font-bold	text-lg	">Internship Informations :</div>
                   <div className="font-semibold">Type : {offer.type}</div>
-                  <div className="font-semibold">City : {offer.city} </div>
                   <div className="font-semibold">Paid : {offer.paid  ? "Yes" : "No"}</div>
                   <div className="font-semibold">Candidats : {offer.nbr_of_candidates}</div>
                   <div className="font-semibold">Deadline : {formatDate_fin}</div>
                   <div className="font-bold text-lg	">Company Informations :</div>
-                  <div className="font-semibold">Denomination : {offer.denomination}</div>
-                  <div className="font-semibold">Sector : {offer.industry}</div>
-                  <div className="font-semibold">Number of Employees : {offer.nbr_employees}</div>
                   
-
+                  <div className="font-semibold">Denomination : {offer.Employer.denomination}</div>
+                  <div className="font-semibold">City : {offer.Employer.city} </div>
+                  <div className="font-semibold">Sector : {offer.Employer.industry}</div>
+                  <div className="font-semibold">Number of Employees : {offer.Employer.nbr_employees}</div>
+                  
+                  
 
 
                 </div>
               </div>
+              
+              </div>
+              ))}
             </div>
           </div>
         </div>

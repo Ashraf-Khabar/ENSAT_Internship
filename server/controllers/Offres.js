@@ -33,7 +33,7 @@ export const getOffers = async (req, res) => {
 /*Get offer join employer based on id : */
 export const getOffer = async (req, res) => {
     try {
-      const Offer= await offers.findOne({ where: { id: req.body.id }, include:Employers  }
+      const Offer= await offers.findAll({ where: { id: req.body.id }, include:Employers  }
         );
       res.status(200).json(Offer);
     } catch (err) {
