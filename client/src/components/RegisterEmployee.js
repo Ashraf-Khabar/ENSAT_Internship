@@ -3,24 +3,37 @@ import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
 
-const RegisterEmployee = () => {
-    const [city, setCity] = useState('');
-    const [laureate, SetLaureate] = useState('');
-    const [legalStatus, SetLegalStatus] = useState('');
-    const [confPassword, setConfPassword] = useState('');
+const RegisterEmployee = (Id) => {
+
+    const [city, setCity] = useState('Casablanca');
+    const [denomination, setDenomination] = useState('');
+    const [laureate, SetLaureate] = useState(false);
+    const [legalStatus, SetLegalStatus] = useState('SA');
+    const [RC, setRC] = useState('');
+    const [industry, setIndustry] = useState('Informatique');
+    const [ICE, setICE] = useState('');
+    const [nbrEmployees, setNbrEmployees] = useState('1-10');
+    const [phone, setPhone] = useState('');
+
     const [isPending, setIsPending] = useState(false);
     const history = useHistory();
 
-    const Register = async (e) => {
-        setIsPending(true);
+    const RegisterEmployee = async (e) => {
         e.preventDefault();
+        setIsPending(true);
+        const id = Id.Id ;
         try {
-            await axios.post('http://localhost:5000/users', {
-                // name: name,
-                email: email,
-                password: password,
-                confPassword: confPassword,
-                role: 'Employee'
+            await axios.post('http://localhost:5000/Employee', {
+                denomination : denomination ,
+                legalStatus : legalStatus ,
+                industry : industry ,
+                city : city ,
+                ICE : ICE ,
+                RC : RC ,
+                nbrEmployees : nbrEmployees ,
+                phone : phone,
+                laureate : laureate ,
+                Id : id,
             });
             toast.success("Register successful");
             history.push("/login");
@@ -29,8 +42,10 @@ const RegisterEmployee = () => {
                 toast.error(error.response.data.msg);
             }
         }
-        setIsPending(false); // Set isPending to false when the data has finished being fetched
-    }
+        setIsPending(false);
+    };
+
+
 
     return (
         <body className="bg-white">
@@ -58,13 +73,27 @@ const RegisterEmployee = () => {
                                 <span className="sr-only">Loading...</span>
                             </center>
                         }
-                        <form onSubmit={Register}>
+                        <form onSubmit={RegisterEmployee}>
                             <div className="flex flex-col max-w-md space-y-5">
-                                <input type="text" placeholder="denomination"
+                                <input type="text" placeholder="denomination" onChange={(e) => setDenomination(e.target.value)}
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
-                                <input onChange={(e) => SetLegalStatus(e.target.value)} type="email" placeholder="legal_status"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <select onChange={(e) => SetLegalStatus(e.target.value)} placeholder="industry"
+                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
+                                    <option value="SA">SA</option>
+                                    <option value="SAS">SAS</option>
+                                    <option value="SARL">SARL</option>
+                                    <option value="GIE">GIE</option>
+                                    <option value="SNC">SNC</option>
+                                    <option value="SCS">SCS</option>
+                                    <option value="SCA">SCA</option>
+                                </select>
+
+                                <select onChange={(e) => setIndustry(e.target.value)} placeholder="industry"
+                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
+                                    <option value="Informatique">Informatique</option>
+                                    <option value="Indus">Indus</option>
+                                </select>
 
                                 <select onChange={(e) => setCity(e.target.value)} placeholder="City"
                                         className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
@@ -75,28 +104,26 @@ const RegisterEmployee = () => {
                                     <option value="Agadir">Agadir</option>
                                 </select>
 
-                                <select onChange={(e) => setCity(e.target.value)} placeholder="City"
-                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
-                                    <option value="Casablanca">Casablanca</option>
-                                    <option value="Tanger">Tanger</option>
-                                    <option value="Rabat">Rabat</option></option>
-                                <
-                                    <option value="Mohammadia">Mohammadiaoption value="Agadir">Agadir</option>
-                                </select>
-
-                                <input onChange={(e) => setConfPassword(e.target.value)} type="text"
+                                <input onChange={(e) => setRC(e.target.value)} type="text"
                                        placeholder="RC"border-2
-                                       className="flex px-3 py-2 md:px-4 md:py-3  border-black rounded-lg font-medium placeholder:font-normal"/>
+                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
-                                <input onChange={(e) => setConfPassword(e.target.value)} type="text"
+                                <input onChange={(e) => setICE(e.target.value)} type="text"
                                        placeholder="ICE"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
-                                <input onChange={(e) => setConfPassword(e.target.value)} type="number"
-                                       placeholder="nbr_employees"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
+                                <select onChange={(e) => setNbrEmployees(e.target.value)} placeholder="City"
+                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
+                                    <option value="1-10'">1-10</option>
+                                    <option value="11-50">11-50</option>
+                                    <option value="51-100">51-100</option>
+                                    <option value="101-250">101-250</option>
+                                    <option value="251-499">251-499</option>
+                                    <option value="500+">500+</option>
+                                    <option value="unknown">unknown</option>
+                                </select>
 
-                                <input onChange={(e) => setConfPassword(e.target.value)} type="number"
+                                <input onChange={(e) => setPhone(e.target.value)} type="text"
                                        placeholder="phone"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
@@ -107,18 +134,6 @@ const RegisterEmployee = () => {
 
                                 <input value="Register" type="submit"
                                        className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"/>
-
-                                <div className="flex justify-center items-center">
-                                    <span className="w-full border border-black"></span>
-                                    <span className="px-4">Or</span>
-                                    <span className="w-full border border-black"></span>
-                                </div>
-                                <button
-                                    className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative">
-              <span className="absolute left-4">
-              </span>
-                                    <span>Sign up with Google</span>
-                                </button>
                             </div>
                         </form>
                     </div>

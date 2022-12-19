@@ -1,29 +1,47 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, createContext, useEffect} from 'react'
 import axios from "axios";
 import {useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
 
-const Register = () => {
+// export const userId = createContext() ;
+
+const Register = ({setId}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
+
+
     const [isPending, setIsPending] = useState(false);
     const history = useHistory();
+
+    // const getUserByEmail = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await axios.get('http://localhost:5000/user');
+    //         setId(response.data[0].id);
+    //         console.log(Id);
+    //     } catch (err) {
+    //         console.log(`error from function getUserByEmail : ${err}`);
+    //     }
+    // }
 
     const Register = async (e) => {
         setIsPending(true);
         e.preventDefault();
+        // history.push('/RegisterEmployee')
         try {
-            await axios.post('http://localhost:5000/users', {
+            const user = await axios.post('http://localhost:5000/users', {
                 name: name,
                 email: email,
                 password: password,
                 confPassword: confPassword,
                 role: 'Employee'
             });
+            setId(user.data.id);
+            console.log(user.data.id);
             toast.success("Register successful");
-            history.push("/login");
+            history.push('/registerEmployee');
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.msg);
@@ -70,7 +88,7 @@ const Register = () => {
                                 <input onChange={(e) => setConfPassword(e.target.value)} type="password"
                                        placeholder="Repeat password"
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input value="Register" type="submit"
+                                <input value="Next" type="submit"
                                        className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"/>
 
                                 <div className="flex justify-center items-center">

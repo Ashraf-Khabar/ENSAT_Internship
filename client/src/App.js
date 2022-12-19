@@ -21,6 +21,7 @@ import Addoffer from "./components/dashboardComponents/employer/Addoffer";
 import RegisterEmployee from "./components/RegisterEmployee";
 function App() {
     const [userId, setUserId] = useState(null);
+    const [Id, setId] = useState('');
 
     /* this function is for frontend */
     const setup = () => {
@@ -58,11 +59,11 @@ function App() {
                       <Route path="/login" >
                           <Login setUserId={setUserId}/>
                       </Route>
-                      <Route path="/register">
-                          <Register/>
+                      <Route path="/register"  >
+                          <Register setId={setId}/>
                       </Route>
-                      <Route path="/registerEmployee">
-                          <RegisterEmployee/>
+                      <Route path="/registerEmployee" >
+                         <RegisterEmployee Id={Id} />
                       </Route>
                       <Route exact path="/dashboard">
                           <Dashboard/>
