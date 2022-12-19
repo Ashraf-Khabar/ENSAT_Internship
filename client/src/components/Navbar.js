@@ -3,17 +3,19 @@ import axios from 'axios';
 import {Link, useHistory} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import appLogo from "../img/appLogo.png";
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 /* iseState variable as a parameter in order to store the user ID : */
 const Navbar = ({userId, setUserId}) => {
     /* Here we make the useStates variables :  */
     const history = useHistory();
     const [navbar, setNavbar] = useState(false);
+    const [userRole, setUserRole] = useState('Student');
+    /*Employee*/
 
     /* Function of logout : */
     const Logout = async () => {
-        if(window.confirm("Are you sure you want to Log out : ")){
+        if (window.confirm("Are you sure you want to Log out : ")) {
             try {
                 await axios.delete('http://localhost:5000/logout');
                 setUserId(null);
@@ -31,6 +33,8 @@ const Navbar = ({userId, setUserId}) => {
             const decoded = jwt_decode(response.data.accessToken);
             console.log(decoded);
             setUserId(decoded.userId);
+            setUserRole(decoded.role);
+            console.log(userRole);
         } catch (error) {
             if (error.response) {
                 history.push("/");
@@ -38,21 +42,18 @@ const Navbar = ({userId, setUserId}) => {
         }
     }
 
-    useEffect( () => {
-        console.log(userId);
-    }, [userId])
 
     useEffect(() => {
         refreshToken();
-    }, [userId]);
-    
+    }, [userId, userRole]);
+
     return (
         <nav className="w-full bg-white shadow">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <Link to="/">
-                            <img src={appLogo} style={{ width: '65px', height: 'px' }}  alt="logo"/>
+                            <img src={appLogo} style={{width: '65px', height: 'px'}} alt="logo"/>
                         </Link>
                         <div className="md:hidden">
                             <button
@@ -99,23 +100,47 @@ const Navbar = ({userId, setUserId}) => {
                         }`}
                     >
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                            { userId ? <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/dashboard" >Home</Link>
+                            {userRole === 'Student' &&
+                                <li className="text-gray-600 hover:text-blue-600">
+                                    <Link
+                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        to="/dashboard">Dashboard</Link>
+                                </li>
+                            }
+                            {userRole === 'Employee' &&
+                                <li className="text-gray-600 hover:text-blue-600">
+                                    <Link
+                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        to="/dashboardemp">Dashboard</Link>
+                                </li>
+                            }
+                            {userId ? <li className="text-gray-600 hover:text-blue-600">
+                                    <Link
+                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        to="/dashboard">Home</Link>
                                 </li> :
                                 <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/" >Home</Link>
+                                    <Link
+                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        to="/">Home</Link>
                                 </li>
                             }
                             <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"  to="/about-us">About US</Link>
+                                <Link
+                                    className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                    to="/about-us">About US</Link>
                             </li>
 
-                            { userId ? <li className="text-gray-600 hover:text-blue-600">
-                                <Link className="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" onClick={Logout} >Log out</Link>
-                            </li> :
-                            <li className="text-gray-600 hover:text-blue-600">
-                                    <Link className="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg" to="/login" >Log in</Link>
-                            </li>
+                            {userId ? <li className="text-gray-600 hover:text-blue-600">
+                                    <Link
+                                        className="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        onClick={Logout}>Log out</Link>
+                                </li> :
+                                <li className="text-gray-600 hover:text-blue-600">
+                                    <Link
+                                        className="py-2 px-4  bg-orange-600 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
+                                        to="/login">Log in</Link>
+                                </li>
                             }
                         </ul>
                     </div>
