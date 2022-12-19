@@ -100,20 +100,7 @@ const Navbar = ({userId, setUserId}) => {
                         }`}
                     >
                         <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                            {userRole === 'Student' &&
-                                <li className="text-gray-600 hover:text-blue-600">
-                                    <Link
-                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-                                        to="/dashboard">Dashboard</Link>
-                                </li>
-                            }
-                            {userRole === 'Employee' &&
-                                <li className="text-gray-600 hover:text-blue-600">
-                                    <Link
-                                        className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-                                        to="/dashboardemp">Dashboard</Link>
-                                </li>
-                            }
+
                             {userId ? <li className="text-gray-600 hover:text-blue-600">
                                     <Link
                                         className="py-2 px-4  bg-orange-500 hover:bg-orange-700 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
