@@ -18,6 +18,7 @@ import Dashboard from "./components/dashboardComponents/Student/Dashboard";
 import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp";
 import Myoffers from "./components/dashboardComponents/employer/Myoffers";
 import Addoffer from "./components/dashboardComponents/employer/Addoffer";
+import RegisterEmployee from "./components/RegisterEmployee";
 function App() {
     const [userId, setUserId] = useState(null);
 
@@ -59,6 +60,9 @@ function App() {
                       </Route>
                       <Route path="/register">
                           <Register/>
+                      </Route>
+                      <Route path="/registerEmployee">
+                          <RegisterEmployee/>
                       </Route>
                       <Route exact path="/dashboard">
                           <Dashboard/>
