@@ -17,6 +17,8 @@ const Myoffers = () => {
         getUsers();
     }, []);
 
+    
+
     const refreshToken = async () => {
         try {
             const response = await axios.get('http://localhost:5000/token');
@@ -64,7 +66,7 @@ const Myoffers = () => {
     <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div  className="mx-auto py-10 ">
             <ul>
-                <li 
+            <li 
                       className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252]  duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
@@ -73,14 +75,14 @@ const Myoffers = () => {
                     </svg>
                     <Link className="font-semibold"  to="/dashboardemp">Applications</Link>
                 </li>
-                <Link to="/dashboardemp/Myoffers" className="flex space-x-2 mt-10 cursor-pointer focus:text-[#EC5252] active:text-[#EC5252] duration-150">
+                <li  className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     <Link className="font-semibold" to="/dashboardemp/Myoffers">My Offers</Link>
-                </Link>
+                </li>
                 <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor">

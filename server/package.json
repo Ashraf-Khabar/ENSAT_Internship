@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -20,5 +19,6 @@
     "mysql2": "^2.3.3",
     "nodemailer": "^6.8.0",
     "sequelize": "^6.26.0"
-  }
+  },
+  "description": ""
 }

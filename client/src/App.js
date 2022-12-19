@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
@@ -9,9 +8,16 @@ import Home from "./components/Home";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
-import Profile from "./components/dashboardComponents/Profile";
 import Offers from "./components/dashboardComponents/Offers";
 
+import Profile from "./components/dashboardComponents/Student/Profile";
+import Applications from "./components/dashboardComponents/Student/Applications";
+import Dashboard from "./components/dashboardComponents/Student/Dashboard";
+
+
+import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp";
+import Myoffers from "./components/dashboardComponents/employer/Myoffers";
+import Addoffer from "./components/dashboardComponents/employer/Addoffer";
 function App() {
     const [userId, setUserId] = useState(null);
 
@@ -42,7 +48,7 @@ function App() {
       <Router>
           <div className="App">
               <ToastContainer position="top-center"/>
-              <div className="relative h-screen overflow-hidden bg-indigo-900 opacity-93">
+              <div className="relative h-screen overflow-auto bg-white opacity-93">
                   <Navbar userId={userId} setUserId={setUserId}/>
                   <Switch>
                       <Route exact path="/">
@@ -57,8 +63,22 @@ function App() {
                       <Route exact path="/dashboard">
                           <Dashboard/>
                       </Route>
-                      <Route path="/dashboard/profile">
+                      <Route  path="/dashboard/profile">
                           <Profile/>
+                      </Route>
+
+                      <Route  path="/dashboard/MyApplications">
+                          <Applications/>
+                      </Route>
+
+                      <Route exact path="/dashboardemp">
+                          <Dashboardemp/>
+                      </Route>
+                      <Route path="/dashboardemp/Myoffers">
+                          <Myoffers/>
+                      </Route>
+                      <Route path="/dashboardemp/Addoffer">
+                          <Addoffer/>
                       </Route>
                       <Route path="/dashboard/offers">
                           <Offers/>
