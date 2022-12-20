@@ -108,7 +108,6 @@ export const RegisterEmployee = async (req, res) => {
                 .status(404)
                 .json({error: "No user was found with the specified UserId"});
         }
-
         // Update the user's record in the database
         const updatedRows = await Employers.update(
             {
