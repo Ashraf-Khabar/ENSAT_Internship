@@ -21,19 +21,19 @@ const RegisterEmployee = (Id) => {
     const RegisterEmployee = async (e) => {
         e.preventDefault();
         setIsPending(true);
-        const id = Id.Id ;
+        const id = Id.Id;
         try {
             await axios.post('http://localhost:5000/Employee', {
-                denomination : denomination ,
-                legalStatus : legalStatus ,
-                industry : industry ,
-                city : city ,
-                ICE : ICE ,
-                RC : RC ,
-                nbrEmployees : nbrEmployees ,
-                phone : phone,
-                laureate : laureate ,
-                Id : id,
+                denomination: denomination,
+                legalStatus: legalStatus,
+                industry: industry,
+                city: city,
+                ICE: ICE,
+                RC: RC,
+                nbrEmployees: nbrEmployees,
+                phone: phone,
+                laureate: laureate,
+                Id: id,
             });
             toast.success("Register successful");
             history.push("/login");
@@ -44,7 +44,6 @@ const RegisterEmployee = (Id) => {
         }
         setIsPending(false);
     };
-
 
 
     return (
@@ -75,7 +74,8 @@ const RegisterEmployee = (Id) => {
                         }
                         <form onSubmit={RegisterEmployee}>
                             <div className="flex flex-col max-w-md space-y-5">
-                                <input type="text" placeholder="denomination" onChange={(e) => setDenomination(e.target.value)}
+                                <input type="text" placeholder="denomination"
+                                       onChange={(e) => setDenomination(e.target.value)}
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
                                 <select onChange={(e) => SetLegalStatus(e.target.value)} placeholder="industry"
@@ -105,7 +105,7 @@ const RegisterEmployee = (Id) => {
                                 </select>
 
                                 <input onChange={(e) => setRC(e.target.value)} type="text"
-                                       placeholder="RC"border-2
+                                       placeholder="RC" border-2
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
                                 <input onChange={(e) => setICE(e.target.value)} type="text"
@@ -128,7 +128,8 @@ const RegisterEmployee = (Id) => {
                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
 
                                 <label style={{display: "flex", alignItems: "center"}}>
-                                    <input type="checkbox" value="literate" onChange={(e) => SetLaureate(e.target.checked)} />
+                                    <input type="checkbox" value="literate"
+                                           onChange={(e) => SetLaureate(e.target.checked)}/>
                                     <span style={{marginLeft: "10px", fontWeight: "bold"}}>laureate</span>
                                 </label>
 

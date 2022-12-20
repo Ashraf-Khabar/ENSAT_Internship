@@ -8,7 +8,7 @@ import 'tailwindcss/components.css';
 
 
 function Dashboardemp() {
-    
+
     const [name, setName] = useState('');
     const [token, setToken] = useState('');
     const [expire, setExpire] = useState('');
@@ -62,48 +62,47 @@ function Dashboardemp() {
     }
 
 
-  return (
-    
-    <div className="flex">
-    <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
-        <div  className="mx-auto py-10 ">
-            <ul>
-                <li 
-                      className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] focus:text-[#EC5252] duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                    </svg>
-                    <Link className="font-semibold"  to="/dashboardemp">All Applications</Link>
-                </li>
-                <Link to="/dashboardemp/Myoffers" className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] active:text-[#EC5252] duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <Link className="font-semibold" to="/dashboardemp/Myoffers">My Offers</Link>
-                </Link>
-                <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>  
-                    </svg>
-                    <Link className="font-semibold" to="/dashboardemp/Addoffer">Add offer</Link>
-                </li>
-    
-            </ul>
+    return (
+        <div className="flex">
+            <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
+                <div className="mx-auto py-10 ">
+                    <ul>
+                        <li
+                            className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] focus:text-[#EC5252] duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            </svg>
+                            <Link className="font-semibold" to="/dashboardemp">All Applications</Link>
+                        </li>
+                        <Link to="/dashboardemp/Myoffers"
+                              className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] active:text-[#EC5252] duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <Link className="font-semibold" to="/dashboardemp/Myoffers">My Offers</Link>
+                        </Link>
+                        <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <Link className="font-semibold" to="/dashboardemp/Addoffer">Add offer</Link>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div className=" min-h-screen w-full bg-white">
+            </div>
         </div>
-    </div>
-    <div className=" min-h-screen w-full bg-white">
-    </div>
-    </div>
-                
 
 
-)
+    )
 }
 
 export default Dashboardemp
