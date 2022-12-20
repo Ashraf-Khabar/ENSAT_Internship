@@ -27,8 +27,6 @@ const Dashboard = () => {
       getOffers();
     }, []);
 
-   
-
     useEffect(() => {
         refreshToken();
         getUsers();
@@ -153,8 +151,6 @@ const Dashboard = () => {
 
             </div>
         </div>
-
-
     );
 }
 

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
@@ -19,8 +19,10 @@ import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp
 import Myoffers from "./components/dashboardComponents/employer/Myoffers";
 import Addoffer from "./components/dashboardComponents/employer/Addoffer";
 import RegisterEmployee from "./components/RegisterEmployee";
+
 function App() {
     const [userId, setUserId] = useState(null);
+    const [role, setRole] = useState(null);
     const [Id, setId] = useState('');
 
     /* this function is for frontend */
@@ -46,56 +48,56 @@ function App() {
         }
     }
 
-  return (
-      <Router>
-          <div className="App">
-              <ToastContainer position="top-center"/>
-              <div className="relative h-screen overflow-auto bg-white opacity-93">
-                  <Navbar userId={userId} setUserId={setUserId}/>
-                  <Switch>
-                      <Route exact path="/">
-                          <Home/>
-                      </Route>
-                      <Route path="/login" >
-                          <Login setUserId={setUserId}/>
-                      </Route>
-                      <Route path="/register"  >
-                          <Register setId={setId}/>
-                      </Route>
-                      <Route path="/registerEmployee" >
-                         <RegisterEmployee Id={Id} />
-                      </Route>
-                      <Route exact path="/dashboard">
-                          <Dashboard/>
-                      </Route>
-                      <Route  path="/dashboard/profile">
-                          <Profile/>
-                      </Route>
+    return (
+        <Router>
+            <div className="App">
+                <ToastContainer position="top-center"/>
+                <div className="relative h-screen overflow-auto bg-white opacity-93">
+                    <Navbar userId={userId} setUserId={setUserId}/>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home/>
+                        </Route>
+                        <Route path="/login">
+                            <Login setUserId={setUserId}/>
+                        </Route>
+                        <Route path="/register">
+                            <Register setId={setId}/>
+                        </Route>
+                        <Route path="/registerEmployee">
+                            <RegisterEmployee Id={Id}/>
+                        </Route>
+                        <Route exact path="/dashboard">
+                            <Dashboard/>
+                        </Route>
+                        <Route path="/dashboard/profile">
+                            <Profile/>
+                        </Route>
 
-                      <Route  path="/dashboard/MyApplications">
-                          <Applications/>
-                      </Route>
+                        <Route path="/dashboard/MyApplications">
+                            <Applications/>
+                        </Route>
 
-                      <Route exact path="/dashboardemp">
-                          <Dashboardemp/>
-                      </Route>
-                      <Route path="/dashboardemp/Myoffers">
-                          <Myoffers/>
-                      </Route>
-                      <Route path="/dashboardemp/Addoffer">
-                          <Addoffer/>
-                      </Route>
-                      <Route path="/dashboard/offers">
-                          <Offers/>
-                      </Route>
-                      <Route path="*">
-                          <Page_404/>
-                      </Route>
-                  </Switch>
-              </div>
-          </div>
-      </Router>
-  );
+                        <Route exact path="/dashboardemp">
+                            <Dashboardemp/>
+                        </Route>
+                        <Route path="/dashboardemp/Myoffers">
+                            <Myoffers/>
+                        </Route>
+                        <Route path="/dashboardemp/Addoffer">
+                            <Addoffer/>
+                        </Route>
+                        <Route path="/dashboard/offers">
+                            <Offers/>
+                        </Route>
+                        <Route path="*">
+                            <Page_404/>
+                        </Route>
+                    </Switch>
+                </div>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
