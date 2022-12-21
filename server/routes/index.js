@@ -2,7 +2,8 @@ import express from "express";
 import { getUsers, Register, Login, Logout } from "../controllers/Users.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { refreshToken } from "../controllers/RefreshToken.js";
-import { getOffers, Addoffer } from "../controllers/Offres.js";
+import {getOffer, getOffers, Addoffer } from "../controllers/Offres.js";
+import { AddApplication } from "../controllers/Applications.js";
 
 const router = express.Router();
 
@@ -14,9 +15,13 @@ router.get('/token', refreshToken);
 router.delete('/logout', Logout);
 
 // Offers routes
+router.get('/offer',  getOffer);
 router.get('/offers',  getOffers);
+
 //employers
 
+//StudentApplication
+router.post('/AddApplication', AddApplication);
 
 
 export default router;

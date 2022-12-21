@@ -1,18 +1,25 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {Link,useHistory} from "react-router-dom";
 import {toast} from "react-toastify";
-import Dashboardemp from './dashboardemp';
+import jwt_decode from "jwt-decode";
+
+
 const Addoffer = () => {
     const [titre, setTitre] = useState('');
     const [sector, setSector] = useState('IT');
     const [type, setType] = useState('PFE');
     const [paid, setPaid] = useState('');
+    const [id,setId] =useState('');
     const [description, setDescription] = useState('');
     const [nbr_of_candidates, setNbrcand] = useState('');
     const [date_debut, setDatedebut] = useState('');
     const [date_fin, setDatefin] = useState('');
     const [state, setState] = useState('true');
+    const [name, setName] = useState("");
+    const [token, setToken] = useState("");
+    const [expire, setExpire] = useState("");
+
     const history = useHistory();
 
     
@@ -28,7 +35,8 @@ const Addoffer = () => {
                 nbr_of_candidates: nbr_of_candidates,
                 date_debut: date_debut,
                 date_fin: date_fin,
-                state: state
+                state: state,
+                id:id
             });
             toast.success("Added successfully");
             history.push("/dashboardemp");
@@ -38,6 +46,27 @@ const Addoffer = () => {
             }
         }
     }
+    useEffect(() => {
+        refreshToken();
+    }, []);
+    
+
+
+    const refreshToken = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/token');
+            setToken(response.data.accessToken);
+            const decoded = jwt_decode(response.data.accessToken);
+            setName(decoded.name);
+            setId(decoded.userId)
+            setExpire(decoded.exp);
+        } catch (error) {
+            if (error.response) {
+                history.push("/");
+            }
+        }
+    }
+
 
     return (  
 
@@ -45,6 +74,7 @@ const Addoffer = () => {
     <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div  className="mx-auto py-10 ">
             <ul>
+                {console.log ( id )}
                 <li 
                       className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] focus:text-[#EC5252] duration-150">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -73,70 +103,110 @@ const Addoffer = () => {
     
             </ul>
         </div>
-    </div>
-    <div className=" min-h-screen w-full bg-white">
-    <div className="flex flex-row w-full">
-                <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
-                    <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
-                        <div className="flex flex-col space-y-2 text-center">
-                            <h2 className="text-3xl md:text-4xl font-bold">Add an offer </h2>
-                            <p className="text-md md:text-xl">test </p>
-                        </div>
-                        <form onSubmit = {Addoffer} >
-                            <div className="flex flex-col max-w-md space-y-5">
-                                <input onChange={(e) => setTitre(e.target.value)} type="text" placeholder="Titre"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                       <select onChange={(e) => setSector(e.target.value)}
-                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
-                                    <option value="IT">IT</option>
-                                    <option value="RH">RH</option>
-                                    <option value="MARKETING">MARKETING</option>
-                                </select>
-                                <select onChange={(e) => setType(e.target.value)}
-                                        className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal">
-                                    <option value="PFE">PFE</option>
-                                    <option value="PFA">PFA</option>
-                                    <option value="OBSERVATION">OBSERVATION</option>
-                                 </select>
-                                 <div className="flex w-max gap-4" onChange={(e) => setPaid(e.target.value)}>
-                                    <p>Paid</p>
-                                    <input type="radio" id="Yes" value="true"></input>
-                                     
-                                     <label for="Yes">Yes</label>
-                                     <input type="radio" id="No" value="false"></input>
-                                    
-                                        <label for="No">No</label>
-                                   </div>
-                                 <textarea onChange={(e) => setDescription(e.target.value)} placeholder="Description"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setNbrcand(e.target.value)} type="number"
-                                       placeholder="number"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setDatedebut(e.target.value)} type="date"
-                                     
-                                      
-                                       min="2018-01-01" max="2023-12-31"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                <input onChange={(e) => setDatefin(e.target.value)} type="date"
-                                        
-                                       
-                                       min="2018-01-01" max="2023-12-31"
-                                       className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"/>
-                                
-                                <input value="Add Offer" type="submit"
-                                       className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"/>
-
-                            </div>
-                        </form>
+      </div>
+      <div className=" min-h-screen w-full bg-white">
+        <div className="flex flex-row w-full">
+          <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
+            <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
+              <div className="flex flex-col space-y-2 text-center">
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  Add an offer{" "}
+                </h2>
+                <p className="text-md md:text-xl">test </p>
+              </div>
+              <form onSubmit={Addoffer}>
+                <div className="flex flex-col max-w-md space-y-5">
+                  <input
+                    onChange={(e) => setTitre(e.target.value)}
+                    type="text"
+                    placeholder="Titre"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  />
+                  <select
+                    onChange={(e) => setSector(e.target.value)}
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  >
+                    <option value="IT">IT</option>
+                    <option value="RH">RH</option>
+                    <option value="MARKETING">MARKETING</option>
+                  </select>
+                  <select
+                    onChange={(e) => setType(e.target.value)}
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  >
+                    <option value="PFE">PFE</option>
+                    <option value="PFA">PFA</option>
+                    <option value="OBSERVATION">OBSERVATION</option>
+                  </select>
+                  <div
+                    className="flex w-max gap-4"
+                    onChange={(e) => setPaid(e.target.value)}
+                  >
+                    <p class="flex items-center">Paid</p>
+                    <div class="flex items-center">
+                      <input
+                        type="radio"
+                        value="1"
+                        name="default-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        Yes
+                      </label>
                     </div>
-               </div>
-             </div>
-         </div>
-    </div>
-    
-       
-     
-    )
-}
+                    <div class="flex items-center">
+                      <input
+                        checked
+                        type="radio"
+                        value="0"
+                        name="default-radio"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                      <label
+                        for="default-radio-2"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                        No
+                      </label>
+                    </div>
+                  </div>
+                  <textarea
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Description"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  />
+                  <input
+                    onChange={(e) => setNbrcand(e.target.value)}
+                    type="number"
+                    placeholder="number"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  />
+                  <input
+                    onChange={(e) => setDatedebut(e.target.value)}
+                    type="date"
+                    min="2018-01-01"
+                    max="2023-12-31"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  />
+                  <input
+                    onChange={(e) => setDatefin(e.target.value)}
+                    type="date"
+                    min="2018-01-01"
+                    max="2023-12-31"
+                    className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                  />
 
-export default Addoffer
+                  <input
+                    value="Add Offer"
+                    type="submit"
+                    className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Addoffer;
