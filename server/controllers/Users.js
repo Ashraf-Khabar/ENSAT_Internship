@@ -68,9 +68,9 @@ export const Register = async (req, res) => {
             to: email, /* list of receivers */
             subject: 'Registration Confirmation', /* Subject line */
             text: `Hi ${name},
-            <center><span style="color: brown">Thank you for registering with us. Your email address is ${email}.
+            Thank you for registering with us. Your email address is ${email}.
             Click the following link to confirm your email address:
-            http://localhost:5000/confirmation/${email}</span></center>`
+            http://localhost:5000/confirmation/${email}`
         };
         // Send the email
         transporter.sendMail(mailOptions, (error, info) => {
