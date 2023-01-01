@@ -17,15 +17,15 @@ import Dashboard from "./components/dashboardComponents/Student/Dashboard";
 import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp";
 import Myoffers from "./components/dashboardComponents/employer/Myoffers";
 import Addoffer from "./components/dashboardComponents/employer/Addoffer";
-<<<<<<< HEAD
+
 import RegisterEmployee from "./components/RegisterEmployee";
-=======
+
 
 import Offer from "./components/dashboardComponents/Student/Offer";
 import Offers from "./components/dashboardComponents/Student/Offers";
 
 import Apply from "./components/Apply";
->>>>>>> origin/FrtAppliVis
+
 
 function App() {
     const [userId, setUserId] = useState(null);
