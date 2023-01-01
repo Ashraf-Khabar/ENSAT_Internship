@@ -36,14 +36,15 @@ export const emailVerification = async (req, res) => {
                 emailConfirmed: true,
             },
             {
-                where: {email: email},
+                where: { email: email },
             }
         );
-        res.status(200).json({message: 'Email confirmation successful!'});
-    } catch (err) {
+        res.status(200).json({ message: 'Email confirmation successful!' });
+    }catch (err) {
         res.status(401).json({err});
     }
 };
+
 
 
 // export const emailVerification = async (req, res) => {
