@@ -10,7 +10,7 @@ const Apply = () => {
 
     const [CV,setCV]=useState('');
     const [cover_letter,setCoverletter]=useState('');
-    const [rang,setRang]=useState(0);
+    // const [rang,setRang]=useState(0);
 
 
 
@@ -29,7 +29,7 @@ const Apply = () => {
             await axios.post('http://localhost:5000/AddApplication', {
                 CV : CV,
                 cover_letter: cover_letter,
-                rang:rang
+                rang:1
             });
             toast.success("Your application has been sent successfully");
             history.push("/dashboard");
@@ -113,11 +113,11 @@ const Apply = () => {
 
                   
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload CV</label>
-<input  onChange={(e) => setCV(e.target.files)} class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+<input  onChange={(e) => setCV(e.target.files[0])} class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 </input>
 
 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Cover Letter </label>
-<input onChange={(e) => setCoverletter(e.target.files)}class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+<input onChange={(e) => setCoverletter(e.target.files[1])}class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 
 
                </input>

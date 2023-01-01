@@ -15,7 +15,7 @@ import Students from "../models/StudentModel.js";
 
 export const AddApplication = async(req, res) => {
   const { CV,
-    cover_letter } = req.body;
+    cover_letter,rang } = req.body;
  
 
   try {
@@ -28,7 +28,7 @@ export const AddApplication = async(req, res) => {
       });
       res.json({msg: "Your application has been sent successfully"});
   } catch (error) {
-      console.log(error);
+      console.log(CV,cover_letter,rang);
   }
 }
 
