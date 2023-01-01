@@ -1,34 +1,37 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import "tailwindcss/base.css";
 import "tailwindcss/components.css";
+import Moment from 'moment';
 
-const Offers = () => {
+const Offer = () => {
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
-  const [users, setUsers] = useState([]);
   const history = useHistory();
-  const [active, setActive] = useState(false);
+  const [offer, setOffer] = useState([]); 
+  const { id } = useParams(); // this function get the offer's id from url 
+  const formatDate_debut = Moment(offer.date_debut).format("MMM Do YYYY"); // change the date format to jan 1th 2022 
+  const formatDate_fin = Moment(offer.date_fin).format("MMM Do YYYY");
 
-  const [offersList, setOffersList] = useState([]);
 
-  const getOffers = () => {
-    Axios.get("http://localhost:5000/offers").then((response) => {
-      setOffersList(response.data);
+  // calls an api to get the informations of the offer + employer using its id 
+  const getOffer = () => {
+    Axios.post("http://localhost:5000/offer", {
+      id: id,
+    }).then((response) => {
+      setOffer(response.data);
     });
   };
 
-  useEffect(() => {
-    getOffers();
-  }, []);
+
+
 
   useEffect(() => {
-    refreshToken().then(r => console.log(r));
-    getUsers().then(r => console.log(r));
+    refreshToken();
+    getOffer();
   }, []);
 
   const refreshToken = async () => {
@@ -45,34 +48,14 @@ const Offers = () => {
     }
   };
 
-  const axiosJWT = Axios.create();
-
-  // axiosJWT.interceptors.request.use(async (config) => {
-  //     const currentDate = new Date();
-  //     if (expire * 1000 < currentDate.getTime()) {
-  //         const response = await axios.get('http://localhost:5000/token');
-  //         config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-  //         setToken(response.data.accessToken);
-  //         const decoded = jwt_decode(response.data.accessToken);
-  //         setName(decoded.name);
-  //         setExpire(decoded.exp);
-  //     }
-  //     return config;
-  // }, (error) => {
-  //     return Promise.reject(error);
-  // });
-
-  const getUsers = async () => {
-    const response = await axiosJWT.get("http://localhost:5000/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setUsers(response.data);
-  };
 
   return (
     <div className="flex ">
+      {//Console log for tests
+      }
+            {console.log(offer) }
+
+      {console.log(offer.Employer) }
       <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
         <div className="mx-auto py-10">
           <ul>
@@ -85,9 +68,9 @@ const Offers = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                 />
               </svg>
@@ -104,9 +87,9 @@ const Offers = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
@@ -125,16 +108,15 @@ const Offers = () => {
                 <path d="M12 14l9-5-9-5-9 5 9 5z" />
                 <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
                 />
               </svg>
               <span className="font-semibold">My Course</span>
             </li>
-            <Link
-              to="/dashboard/profile"
+            <li
               className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150"
             >
               <svg
@@ -145,16 +127,16 @@ const Offers = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
               <Link className="font-semibold" to="/dashboard/profile">
                 Profile
               </Link>
-            </Link>
+            </li>
             <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -164,9 +146,9 @@ const Offers = () => {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
                 />
               </svg>
@@ -189,33 +171,51 @@ const Offers = () => {
             </div>
           </nav>
         </div>
-        <div className="overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
+        <div className=" overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
+          <div className="container w-full md:max-w-3xl mx-auto pt-2">
+            <div className="w-full px-4 md:px-2 text-xl text-gray-800 leading-normal">
+            {offer.map((offer,key) => (
+              <div>
+              <h1 className="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-xl md:text-4xl">
+                
+                {offer.titre}
+              </h1>
+              <div className="font-sans">
+                <p className="text-sm md:text-base font-normal text-gray-600">
+                  Published {formatDate_debut}
+                </p>
+              </div>
+              <div>
+                <p className="py-8 px-10 text-base	text-justify">
+                  {offer.description}
+                </p>
+                <div className="ml-20 pb-8 text-start grid  grid-rows-5 grid-flow-col text-base font-sans ">
+                  <div className="font-bold	text-lg	">Internship Informations :</div>
+                  <div className="font-semibold">Type : {offer.type}</div>
+                  <div className="font-semibold">Paid : {offer.paid  ? "Yes" : "No"}</div>
+                  <div className="font-semibold">Candidats : {offer.nbr_of_candidates}</div>
+                  <div className="font-semibold">Deadline : {formatDate_fin}</div>
+                  <div className="font-bold text-lg	">Company Informations :</div>
+                  
+                  {/* <div className="font-semibold">Denomination : {offer.denomination}</div>
+                  <div className="font-semibold">City : {offer.Employer.city} </div>
+                  <div className="font-semibold">Sector : {offer.Employer.industry}</div> */}
+                  {/* <div className="font-semibold">Number of Employees : {offer.Employer.nbr_employees}</div> */}
+                  
+                  
 
-          <ul className="flex flex-col mb-2 divide-y divide">
-          {offersList.map((offer) => (
-            <li className="flex flex-row   hover:bg-indigo-200">
-              <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-                <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-                  <a href="#" className="relative block"></a>
-                </div>
-                <div className="flex-1 pl-1 mr-16">
-                  <div className="font-medium dark:text-white"> {offer.titre}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-200">
-               {offer.denomination}
-                  </div>
-                </div>
-                <div className="text-xs text-gray-600 dark:text-gray-200">
-                {offer.date_fin}
+
                 </div>
               </div>
-            </li>
-           
-            ))}
-          </ul>
+              
+              </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Offers;
+export default Offer;

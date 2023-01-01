@@ -5,12 +5,13 @@ import {toast} from "react-toastify";
 import jwt_decode from "jwt-decode";
 import Dashboardemp from './dashboardemp';
 
+
 const Addoffer = () => {
     const [titre, setTitre] = useState('');
     const [sector, setSector] = useState('IT');
     const [type, setType] = useState('PFE');
     const [paid, setPaid] = useState('');
-    const [id, setId] = useState('')
+    const [id,setId] =useState('');
     const [description, setDescription] = useState('');
     const [nbr_of_candidates, setNbrcand] = useState('');
     const [date_debut, setDatedebut] = useState('');
@@ -36,7 +37,7 @@ const Addoffer = () => {
                 date_debut: date_debut,
                 date_fin: date_fin,
                 state: state,
-                id: id
+                id:id
             });
             toast.success("Added successfully");
             history.push("/dashboardemp");

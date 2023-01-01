@@ -1,5 +1,5 @@
-import Employers from "../models/EmployerModel.js";
-import Offers from "../models/offerModel.js";
+import Applications from "../models/ApplicationModel.js";
+import Students from "../models/StudentModel.js";
 
 /* Post API : Create offer */
 // export const createOffer = async (req, res) => {
@@ -13,26 +13,20 @@ import Offers from "../models/offerModel.js";
 //   }
 // };
 
-export const addOffer = async(req, res) => {
-  const { titre, sector,type,paid,description,nbr_of_candidates,date_debut,date_fin,state} = req.body;
+export const AddApplication = async(req, res) => {
+  const { CV,
+    cover_letter } = req.body;
  
 
   try {
-      const employer = await Employers.findOne({where: { userId: req.body.id }} );
+      // const employer = await Students.findOne({where: { userId: req.body.id }} );
  
-      await Offers.create({
-        titre: titre,
-        sector: sector,
-        type: type,
-        paid:paid,
-        description:description,
-        nbr_of_candidates: nbr_of_candidates,
-        date_debut: date_debut,
-        date_fin: date_fin,
-        state: state,
-        EmployerId : employer.id
+      await Applications.create({
+       CV:CV,
+       cover_letter: cover_letter,
+       rang:rang
       });
-      res.json({msg: "Added Successfully"});
+      res.json({msg: "Your application has been sent successfully"});
   } catch (error) {
       console.log(error);
   }
