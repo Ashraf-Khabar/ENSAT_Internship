@@ -38,28 +38,26 @@ export const Addoffer = async(req, res) => {
   }
 }
 
-/*Get API : get All offer (select *) */
+/*Get API : get All offers+employers (select * offers join employers) */
 export const getOffers = async (req, res) => {
-    try {
-      const Offers = await Offers.findAll({ include:Employers  });
-      res.status(200).json(Offers);
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const allOffers = await Offers.findAll({ include:Employers  });
+    res.status(200).json(allOffers);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-/*Get offer based on id : */
+/*Get offer join employer based on id : */
 export const getOffer = async (req, res) => {
-    try {
-      const Offer= await Offers.findByPk({
-        where: {
-          id:req.body.id
-        }
-      });
-      res.status(200).json(Offer);
-    } catch (err) {
-      next(err);
-    }
+  try {
+    const Offer= await Offers.findAll({ where: { id: req.body.id }, include:Employers  }
+      );
+    res.status(200).json(Offer);
+  } catch (err) {
+    
+    console.log(err +"I CANT INCLUDE");
+  }
 }
 
 /*Get API : get offer by id of employee*/

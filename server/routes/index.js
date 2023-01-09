@@ -15,8 +15,9 @@ router.get('/token', refreshToken);
 router.delete('/logout', Logout);
 
 // Offers routes
-router.get('/offer',  getOffer);
-router.get('/offers',  getOffers);
+router.get('/offers',  getOffers); //route to get all offers + their employers informations
+
+router.post('/offer',  getOffer); //route to get 1 offer and its employer informations
 
 //employers
 

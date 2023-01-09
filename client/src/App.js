@@ -18,10 +18,9 @@ import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp
 import Myoffers from "./components/dashboardComponents/employer/Myoffers";
 import Addoffer from "./components/dashboardComponents/employer/Addoffer";
 
-import Offer from "./components/dashboardComponents/Student/Offer";
-import Offers from "./components/dashboardComponents/Student/Offers";
 
 import Apply from "./components/Apply";
+import Offer from "./components/dashboardComponents/Student/Offer";
 
 function App() {
     const [userId, setUserId] = useState(null);
@@ -75,14 +74,12 @@ function App() {
                       <Route  path="/dashboard/MyApplications">
                           <Applications/>
                       </Route>
-                      <Route  path="/dashboard/apply">
-                          <Apply/>
-                      </Route>
+                      <Route  path="/dashboard/apply/:id" component = {Apply} />
+                          
+                      
 
 
-                      <Route  path="/dashboard/offers">
-                          <Offers/>
-                      </Route>
+                    
 
                       <Route path="/dashboard/offer/:id" component = {Offer} /> 
 
