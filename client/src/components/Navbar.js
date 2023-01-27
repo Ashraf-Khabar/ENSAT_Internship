@@ -29,12 +29,9 @@ const Navbar = ({userId, setUserId}) => {
     const refreshToken = async () => {
         try {
             const response = await axios.get('http://localhost:5000/token');
-            console.log();
             const decoded = jwt_decode(response.data.accessToken);
-            console.log(decoded);
             setUserId(decoded.userId);
             setUserRole(decoded.role);
-            console.log(userRole);
         } catch (error) {
             if (error.response) {
                 history.push("/");

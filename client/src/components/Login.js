@@ -21,8 +21,13 @@ const Login = ({setUserId}) => {
                 password: password
             });
             setUserId(reslut.data.accessToken);
-            toast.success("Logged in successfully");
-            history.push("/dashboard");
+            if (reslut.data.role === "Employee") {
+                toast.success("Logged in successfully");
+                history.push("/dashboardemp");
+            } else {
+                toast.success("Logged in successfully");
+                history.push("/dashboard");
+            }
         } catch (error) {
             if (error.response) {
                 toast.error(error.response.data.msg);

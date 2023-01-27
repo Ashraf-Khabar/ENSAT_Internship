@@ -80,39 +80,36 @@ function App() {
                             <Profile/>
                         </Route>
 
-                      <Route  path="/dashboard/MyApplications">
-                          <Applications/>
-                      </Route>
-                      <Route  path="/dashboard/apply">
-                          <Apply/>
-                      </Route>
-
-            <Route exact path="/dashboardemp">
-                            <Dashboardemp/>
+                        <Route path="/dashboard/MyApplications">
+                            <Applications/>
+                        </Route>
+                        <Route path="/dashboard/apply">
+                            <Apply/>
                         </Route>
 
-                    
+                        <Route exact path="/dashboardemp">
+                            <Dashboardemp/>
+                        </Route>
+                        <Route path="/dashboard/offer/:id" component={Offer}/>
 
-                      <Route path="/dashboard/offer/:id" component = {Offer} /> 
+                        <Route exact path="/dashboardemp">
+                            <Dashboardemp/>
+                        </Route>
+                        <Route path="/dashboardemp/Myoffers">
+                            <Myoffers/>
+                        </Route>
+                        <Route path="/dashboardemp/Addoffer">
+                            <Addoffer/>
+                        </Route>
 
-                      <Route exact path="/dashboardemp">
-                          <Dashboardemp/>
-                      </Route>
-                      <Route path="/dashboardemp/Myoffers">
-                          <Myoffers/>
-                      </Route>
-                      <Route path="/dashboardemp/Addoffer">
-                          <Addoffer/>
-                      </Route>
-                      
-                      <Route path="*">
-                          <Page_404/>
-                      </Route>
-                  </Switch>
-              </div>
-          </div>
-      </Router>
-  );
+                        <Route path="*">
+                            <Page_404/>
+                        </Route>
+                    </Switch>
+                </div>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
