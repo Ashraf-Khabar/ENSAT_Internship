@@ -31,18 +31,13 @@ const Offers = () => {
 
  
 
-<<<<<<<< HEAD:client/src/components/dashboardComponents/Offers.js
-  useEffect(() => {
-    refreshToken().then(r => console.log(r));
-    getUsers().then(r => console.log(r));
-========
+
   
   // add getoffers to useeffect to display automatically the list without button....
   useEffect(() => {
     refreshToken();
     getUsers();
     getOffers();
->>>>>>>> origin/FrtAppliVis:client/src/components/dashboardComponents/Student/Offers.jsx
   }, []);
 
   const refreshToken = async () => {

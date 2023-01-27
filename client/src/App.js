@@ -22,7 +22,6 @@ import RegisterEmployee from "./components/RegisterEmployee";
 
 
 import Offer from "./components/dashboardComponents/Student/Offer";
-import Offers from "./components/dashboardComponents/Student/Offers";
 
 import Apply from "./components/Apply";
 
@@ -81,32 +80,6 @@ function App() {
                             <Profile/>
                         </Route>
 
-<<<<<<< HEAD
-                        <Route path="/dashboard/MyApplications">
-                            <Applications/>
-                        </Route>
-
-                        <Route exact path="/dashboardemp">
-                            <Dashboardemp/>
-                        </Route>
-                        <Route path="/dashboardemp/Myoffers">
-                            <Myoffers/>
-                        </Route>
-                        <Route path="/dashboardemp/Addoffer">
-                            <Addoffer/>
-                        </Route>
-                        <Route path="/dashboard/offers">
-                            <Offers/>
-                        </Route>
-                        <Route path="*">
-                            <Page_404/>
-                        </Route>
-                    </Switch>
-                </div>
-            </div>
-        </Router>
-    );
-=======
                       <Route  path="/dashboard/MyApplications">
                           <Applications/>
                       </Route>
@@ -114,10 +87,11 @@ function App() {
                           <Apply/>
                       </Route>
 
+            <Route exact path="/dashboardemp">
+                            <Dashboardemp/>
+                        </Route>
 
-                      <Route  path="/dashboard/offers">
-                          <Offers/>
-                      </Route>
+                    
 
                       <Route path="/dashboard/offer/:id" component = {Offer} /> 
 
@@ -130,9 +104,7 @@ function App() {
                       <Route path="/dashboardemp/Addoffer">
                           <Addoffer/>
                       </Route>
-                      {/* <Route path="/dashboard/offers">
-                          <Offers/>
-                      </Route> */}
+                      
                       <Route path="*">
                           <Page_404/>
                       </Route>
@@ -141,7 +113,6 @@ function App() {
           </div>
       </Router>
   );
->>>>>>> origin/FrtAppliVis
 }
 
 export default App;
