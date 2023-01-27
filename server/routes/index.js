@@ -25,7 +25,8 @@ router.delete('/logout', Logout);
 
 /* Offers routes */
 router.get('/offers',  getOffers);
-router.post('/offer',  getOffer); 
+router.post('/offers',  getOffer); 
+router.post('/offers',  getOfferByEmployer); 
 router.post('/Addoffer', Addoffer);
 
 //employers

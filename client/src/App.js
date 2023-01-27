@@ -94,6 +94,7 @@ function App() {
                     
 
                       <Route path="/dashboard/offer/:id" component = {Offer} /> 
+                      
 
                       <Route exact path="/dashboardemp">
                           <Dashboardemp/>

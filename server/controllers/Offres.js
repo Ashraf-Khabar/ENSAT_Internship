@@ -70,8 +70,9 @@ export const getOfferByEmployer = async (req, res) => {
     });
     res.status(200).json(count,rows);
   } catch (err) {
-    next(err);
+    console.log(err +"none");
   }
+
 }
 
 /*API delete : delete offer*/
