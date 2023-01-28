@@ -13,21 +13,18 @@ import Students from "../models/StudentModel.js";
 //   }
 // };
 
-export const AddApplication = async(req, res) => {
-  const { CV,
-    cover_letter,rang } = req.body;
- 
+export const AddApplication = async (req, res) => {
+    const {
+        CV, cover_letter, rang, OfferId, StudentId
+    } = req.body;
 
-  try {
-      // const employer = await Students.findOne({where: { userId: req.body.id }} );
- 
-      await Applications.create({
-       CV:CV,
-       cover_letter: cover_letter,
-       rang:rang
-      });
-      res.json({msg: "Your application has been sent successfully"});
-  } catch (error) {
-      console.log(CV,cover_letter,rang);
-  }
+    try {
+        // const employer = await Students.findOne({where: { userId: req.body.id }} );
+        const result = await Applications.create({
+            CV: CV, cover_letter: cover_letter, rang: rang, OfferId: OfferId, StudentId: StudentId
+        }, {fields : ['CV', 'cover_letter', 'rang', 'OfferId', 'StudentId']});
+        res.json({msg: "Your application has been sent successfully"});
+    } catch (error) {
+       console.log(error)
+    }
 };

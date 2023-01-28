@@ -6,6 +6,7 @@ import "tailwindcss/base.css";
 import "tailwindcss/components.css";
 import Moment from "moment";
 
+
 const Offer = () => {
   const [name, setName] = useState("");
   const [token, setToken] = useState("");

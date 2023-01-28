@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import jwt_decode from "jwt-decode";
 
@@ -17,24 +17,30 @@ const Apply = () => {
     const history = useHistory();
 
     const AddApplication = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post('http://localhost:5000/AddApplication', {
-                CV: CV,
-                cover_letter: cover_letter,
-                rang: rang
-            });
-            toast.success("Your application has been sent successfully");
-            history.push("/dashboard");
-        } catch (error) {
-            if (error.response) {
-                toast.error(error.response.data.msg);
-            }
-        }
+        console.log("clicked");
+        const StudentId = id ;
+        console.log("student id : " + StudentId);
+        console.log("offer id : " + offerId);
+        // e.preventDefault();
+        // try {
+        //     await axios.post('http://localhost:5000/AddApplication', {
+        //         CV: CV,
+        //         cover_letter: cover_letter,
+        //         rang: rang
+        //     });
+        //     toast.success("Your application has been sent successfully");
+        //     history.push("/dashboard");
+        // } catch (error) {
+        //     if (error.response) {
+        //         toast.error(error.response.data.msg);
+        //     }
+        // }
     }
+
     useEffect(() => {
-        refreshToken();
-    }, []);
+        refreshToken()
+        AddApplication()
+    }, [AddApplication]);
 
     const refreshToken = async () => {
         try {
@@ -50,12 +56,13 @@ const Apply = () => {
             }
         }
     }
+
+
     return (
         <div className="flex">
             <div className="scrollable-container flex w-2/5 md:w-1/4 h-screen bg-white">
                 <div className="mx-auto py-10 ">
                     <ul>
-                        {console.log(id)}
                         <li
                             className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] focus:text-[#EC5252] duration-150">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -93,7 +100,7 @@ const Apply = () => {
                                 <h2 className="text-3xl md:text-4xl font-bold">
                                     Apply{" "}
                                 </h2>
-                                <p className="text-md md:text-xl">test </p>
+                                <p className="text-md md:text-xl">test</p>
                             </div>
 
                             <form onSubmit={AddApplication}>

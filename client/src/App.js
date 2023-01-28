@@ -30,6 +30,7 @@ function App() {
     const [userId, setUserId] = useState(null);
     const [role, setRole] = useState(null);
     const [Id, setId] = useState('');
+    const [offerId, setOfferId] = useState('') ;
 
     /* this function is for frontend */
     const setup = () => {
@@ -79,18 +80,17 @@ function App() {
                         <Route path="/dashboard/profile">
                             <Profile/>
                         </Route>
-
                         <Route path="/dashboard/MyApplications">
                             <Applications/>
                         </Route>
-                        <Route path="/dashboard/apply">
+                        <Route path="/dashboard/apply" offerId={offerId}>
                             <Apply/>
                         </Route>
 
                         <Route exact path="/dashboardemp">
                             <Dashboardemp/>
                         </Route>
-                        <Route path="/dashboard/offer/:id" component={Offer}/>
+                        <Route path="/dashboard/offer/:id" component={Offer} />
 
                         <Route exact path="/dashboardemp">
                             <Dashboardemp/>
