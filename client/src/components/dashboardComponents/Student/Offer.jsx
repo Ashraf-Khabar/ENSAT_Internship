@@ -132,6 +132,7 @@ const Offer = () => {
         <div className=" overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
           <div className="container w-full md:max-w-3xl mx-auto pt-2">
             <div className="w-full px-4 md:px-2 text-xl text-gray-800 leading-normal">
+              {console.log(offer)}
               {offer.map((offer, key) => (
                 <div>
                   <div className="text-center">

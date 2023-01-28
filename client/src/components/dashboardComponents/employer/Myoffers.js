@@ -2,35 +2,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory,useParams } from "react-router-dom";
 import "tailwindcss/base.css";
 import "tailwindcss/components.css";
 import Moment from "moment";
 
 const Myoffers = () => {
   const [name, setName] = useState("");
+  let [id, setId] = useState(0);
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
-  const [users, setUsers] = useState([]);
   const history = useHistory();
-  const [active, setActive] = useState(false);
-
   const [offersList, setOffersList] = useState([]);
 
-  //appel de api to get all offers and their employers
-  const getOfferByEmployer = () => {
-    axios.get("http://localhost:5000/offers").then((response) => {
-      setOffersList(response.data);
-    });
-  };
 
-  useEffect(() => {
-    getOfferByEmployer();
-  }, []);
+
 
   useEffect(() => {
     refreshToken();
-    getUsers();
+    getOfferByEmployer();
   }, []);
 
   const refreshToken = async () => {
@@ -39,6 +29,7 @@ const Myoffers = () => {
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
+      setId(decoded.userId);
       setExpire(decoded.exp);
     } catch (error) {
       if (error.response) {
@@ -46,6 +37,14 @@ const Myoffers = () => {
       }
     }
   };
+    //appel de api to get all offers and their employers
+    const getOfferByEmployer = () => {
+      axios.post("http://localhost:5000/offersEmployer", {
+        id : id
+      }).then((response) => {
+        setOffersList(response.data);
+      });
+    };
 
   const axiosJWT = axios.create();
 
@@ -67,14 +66,7 @@ const Myoffers = () => {
     }
   );
 
-  const getUsers = async () => {
-    const response = await axiosJWT.get("http://localhost:5000/users", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setUsers(response.data);
-  }; 
+
 
     return (
           
@@ -167,6 +159,8 @@ const Myoffers = () => {
   
   <ul className="flex flex-col mb-2 divide-y divide">
       {console.log(offersList)}
+      {console.log(id)}
+
   {offersList.map((offer,key) => (
     // looping/Maping through every item in the list of offers
     //the link below allow to get redirected to the offer page throught a click on its row

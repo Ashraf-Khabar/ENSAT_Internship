@@ -62,15 +62,15 @@ export const getOffer = async (req, res) => {
 
 /*Get API : get offer by id of employee*/
 export const getOfferByEmployer = async (req, res) => {
+
   try {
-    const { count, rows } = await Offers.findAndCountAll({
-      where: {
-        EmployerId: req.body.id
-      }
-    });
-    res.status(200).json(count,rows);
+
+    const employer = await Employers.findOne({where: { UserId: req.body.id }} );
+
+    const offers = await Offers.findAll({  where: { EmployerId : employer.id }} );
+    res.status(200).json(offers);
   } catch (err) {
-    console.log(err +"none");
+    console.log(req.body ," none");
   }
 
 }

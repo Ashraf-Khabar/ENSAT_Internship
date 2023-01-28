@@ -1,7 +1,7 @@
 import express from "express";
 import {getUsers, Register, Login, Logout, RegisterEmployee, getUserById} from "../controllers/Users.js";
 import { verifyToken } from "../middleware/VerifyToken.js";
-import { getOffers , getOffer, Addoffer } from "../controllers/Offres.js";
+import { getOffers , getOffer, Addoffer, getOfferByEmployer } from "../controllers/Offres.js";
 import {emailVerification, refreshToken} from "../controllers/RefreshToken.js";
 import { AddApplication } from "../controllers/Applications.js";
 
@@ -25,8 +25,8 @@ router.delete('/logout', Logout);
 
 /* Offers routes */
 router.get('/offers',  getOffers);
-router.post('/offers',  getOffer); 
-router.post('/offers',  getOfferByEmployer); 
+router.post('/offer',  getOffer); 
+router.post('/offersEmployer', getOfferByEmployer); 
 router.post('/Addoffer', Addoffer);
 
 //employers
