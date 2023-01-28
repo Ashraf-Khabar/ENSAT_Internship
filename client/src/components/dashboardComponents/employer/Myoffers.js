@@ -9,7 +9,7 @@ import Moment from "moment";
 
 const Myoffers = () => {
   const [name, setName] = useState("");
-  let [id, setId] = useState(0);
+  let id;
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
   const history = useHistory();
@@ -20,8 +20,10 @@ const Myoffers = () => {
 
   useEffect(() => {
     refreshToken();
-    getOfferByEmployer();
   }, []);
+ 
+  
+ 
 
   const refreshToken = async () => {
     try {
@@ -29,8 +31,10 @@ const Myoffers = () => {
       setToken(response.data.accessToken);
       const decoded = jwt_decode(response.data.accessToken);
       setName(decoded.name);
-      setId(decoded.userId);
+      id =decoded.userId;
       setExpire(decoded.exp);
+      getOfferByEmployer();
+
     } catch (error) {
       if (error.response) {
         history.push("/");
@@ -39,9 +43,7 @@ const Myoffers = () => {
   };
     //appel de api to get all offers and their employers
     const getOfferByEmployer = () => {
-      axios.post("http://localhost:5000/offersEmployer", {
-        id : id
-      }).then((response) => {
+      axios.get("http://localhost:5000/offersEmployer", { params: { id: id } }).then((response) => {
         setOffersList(response.data);
       });
     };

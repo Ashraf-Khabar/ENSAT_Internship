@@ -65,12 +65,12 @@ export const getOfferByEmployer = async (req, res) => {
 
   try {
 
-    const employer = await Employers.findOne({where: { UserId: req.body.id }} );
+    const employer = await Employers.findOne({where: { UserId: req.query.id }} );
 
-    const offers = await Offers.findAll({  where: { EmployerId : employer.id }} );
+    const offers = await Offers.findAll({ include:Employers  ,where: { EmployerId : employer.id }} );
     res.status(200).json(offers);
   } catch (err) {
-    console.log(req.body ," none");
+    console.log(req.query ," none");
   }
 
 }
