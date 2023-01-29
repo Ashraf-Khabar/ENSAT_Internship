@@ -7,15 +7,17 @@ import "tailwindcss/components.css";
 import Moment from "moment";
 
 
-const Offer = () => {
+const Offer = (setOfferId) => {
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
   const history = useHistory();
   const [offer, setOffer] = useState([]);
-  const { id } = useParams(); // this function get the offer's id from url
+  const { id } = useParams();// this function get the offer's id from url
 
-  // calls an api to get the informations of the offer + employer using its id
+  setOfferId(id);
+  // calls an api to get the information of the offer + employer using its id
+
   const getOffer = () => {
     Axios.post("http://localhost:5000/offer", {
       id: id,

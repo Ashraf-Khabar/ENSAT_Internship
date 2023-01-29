@@ -75,10 +75,12 @@ function App() {
                         <Route path="/dashboard/MyApplications">
                             <Applications/>
                         </Route>
-                        <Route path="/dashboard/apply" offerId={offerId}>
-                            <Apply/>
+                        <Route path="/dashboard/apply" >
+                            <Apply offerId={offerId} />
                         </Route>
-                        <Route path="/dashboard/offer/:id" component={Offer} />
+                        <Route path="/dashboard/offer/:id">
+                            <Offer setOfferId={setOfferId} />
+                        </Route>
                         <Route exact path="/dashboardemp">
                             <Dashboardemp/>
                         </Route>

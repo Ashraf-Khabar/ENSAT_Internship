@@ -5,7 +5,7 @@ import {toast} from "react-toastify";
 import jwt_decode from "jwt-decode";
 
 
-const Apply = ({offerId}) => {
+const Apply = (offerId) => {
     const [CV, setCV] = useState('');
     const [cover_letter, setCoverletter] = useState('');
     const [rang, setRang] = useState(0);
@@ -18,8 +18,8 @@ const Apply = ({offerId}) => {
     const AddApplication = async (e) => {
         console.log("clicked");
         const StudentId = id ;
-        console.log("student id : " + StudentId);
-
+        console.log("student id : " + StudentId) ;
+        console.log("offer id : " + offerId) ;
         // e.preventDefault();
         // try {
         //     await axios.post('http://localhost:5000/AddApplication', {
