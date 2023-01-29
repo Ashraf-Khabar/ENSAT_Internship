@@ -7,13 +7,15 @@ import "tailwindcss/base.css";
 import "tailwindcss/components.css";
 import Moment from "moment";
 
-const Myoffers = () => {
+const ProfileEmp = () => {
   const [name, setName] = useState("");
-  let id;
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
   const history = useHistory();
-  const [offersList, setOffersList] = useState([]);
+  const [email, setEmail] = useState("");
+
+  const [employer, setEmployer] = useState([]);
+  let id;
 
 
 
@@ -33,7 +35,8 @@ const Myoffers = () => {
       setName(decoded.name);
       id =decoded.userId;
       setExpire(decoded.exp);
-      getOfferByEmployer();
+      setEmail(decoded.email);
+      getEmployer();
 
     } catch (error) {
       if (error.response) {
@@ -42,12 +45,15 @@ const Myoffers = () => {
     }
   };
     //appel de api to get all offers and their employers
-    const getOfferByEmployer = () => {
-      axios.get("http://localhost:5000/offersEmployer", { params: { id: id } }).then((response) => {
-        setOffersList(response.data);
-      });
-    };
-
+    const getEmployer = () => {
+        axios
+          .post("http://localhost:5000/employer", {
+            id: id,
+          })
+          .then((response) => {
+            setEmployer(response.data);
+          });
+      };
   const axiosJWT = axios.create();
 
   axiosJWT.interceptors.request.use(
@@ -96,7 +102,7 @@ const Myoffers = () => {
                 <Link className="font-semibold" to="/dashboardemp">All Applications</Link>
               </li>
   
-              <li className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] duration-150">
+              <li className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
@@ -118,7 +124,7 @@ const Myoffers = () => {
                 </Link>
               </li>
               <Link
-                to="/dashboard/profile"
+                to="/dashboardemp/profile"
                 className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150"
               >
                 <svg
@@ -140,7 +146,8 @@ const Myoffers = () => {
                 </Link>
               </Link>
               <li
-              className="flex space-x-2 mt-10 cursor-pointer hover:text-[#EC5252] duration-150"
+              to="/dashboardemp/profile"
+              className="flex space-x-2 mt-10 cursor-pointer text-[#EC5252] duration-150"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,9 +163,7 @@ const Myoffers = () => {
                   d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 />
               </svg>
-              <Link className="font-semibold"
-                               to="/dashboardemp/profile"
-                               >
+              <Link className="font-semibold" to="/dashboardemp/profile">
                 Profile
               </Link>
             </li>
@@ -180,36 +185,64 @@ const Myoffers = () => {
             </nav>
           </div>
   
-          <div className="overflow-y: scroll items-center justify-center ml-10 mr-10 mt-5  bg-white rounded-lg shadow dark:bg-gray-800">
-  
-  <ul className="flex flex-col mb-2 divide-y divide">
-      {console.log(offersList)}
-      {console.log(id)}
+          <div class="w-full md:w-9/12 mx-2 h-64">
+          <div class="bg-white p-3 shadow-sm rounded-sm">
+            {console.log(employer)}
+            <div className="relative">
+              <img
+                className="float-right rounded-lg"
+                style={{
+                  margin: "10px",
+                  width: "170px",
+                  height: "190px",
+                  padding: "10px",
+                  marginTop: "10px",
+                }}
+                src="https://imagez.tmz.com/image/f7/1by1/2021/12/14/f7703994b69d48ca802df55729a2325c_xl.jpg"
+                alt="Elon Musk"
+              />
+              <button className="absolute right-4 top-48  inline-flex items-center justify-center font-bold overflow-hidden group rounded-md p-2  bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 m-2">
+              <span class="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute"></span>
 
-  {offersList.map((offer,key) => (
-    // looping/Maping through every item in the list of offers
-    //the link below allow to get redirected to the offer page throught a click on its row
-    <Link className="flex flex-row   hover:bg-indigo-200" to={{pathname :"/dashboard/offer/"+offer.id}}>
-      <div className="flex items-center flex-1 p-4 cursor-pointer select-none">
-        <div className="flex flex-col items-center justify-center w-10 h-10 mr-4">
-          <a href="#" className="relative block"></a>
-        </div>
-        <div className="flex-1 pl-1 mr-16">
-          <div className="font-medium dark:text-white" > {offer.titre}</div>
-          <div className="text-sm text-gray-600 dark:text-gray-200" >
-         {offer.Employer.denomination}
-  
+              <span class="relative text-white">Changer l'image</span>
+
+                
+              </button>
+              
+            </div>
+            <div class="text-gray-700 pt-10">
+              <div class="grid md:row-span-2 text-base">
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Denomination</div>
+                  <div class="px-4 py-2">{employer.denomination}</div>
+                </div>
+
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Legal Status</div>
+                  <div class="px-4 py-2">{employer.legal_status}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Industry</div>
+                  <div class="px-4 py-2">{employer.industry}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">City</div>
+                  <div class="px-4 py-2">{employer.city}</div>
+                </div>
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Nomber of Employees</div>
+                  <div class="px-4 py-2">{employer.nbr_employees}</div>
+                </div>
+              
+
+                <div class="grid grid-cols-2">
+                  <div class="px-4 py-2 font-semibold">Email</div>
+                  <div class="px-4 py-2">{email}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="text-xs text-gray-600 dark:text-gray-200">
-        {Moment(offer.date_fin).format("MMM Do YYYY")}
-        </div>
-      </div>
-    </Link>
-   
-    ))}
-  </ul>
-  </div>
   
         </div>
       </div>
@@ -218,4 +251,4 @@ const Myoffers = () => {
 
 }
 
-export default Myoffers;
+export default ProfileEmp;

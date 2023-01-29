@@ -4,6 +4,8 @@ import { verifyToken } from "../middleware/VerifyToken.js";
 import { getOffers , getOffer, Addoffer, getOfferByEmployer } from "../controllers/Offres.js";
 import {emailVerification, refreshToken} from "../controllers/RefreshToken.js";
 import { AddApplication } from "../controllers/Applications.js";
+import { getStudent } from "../controllers/Students.js";
+import { getEmployer } from "../controllers/Employers.js";
 
 const router = express.Router();
 
@@ -30,8 +32,12 @@ router.get('/offersEmployer', getOfferByEmployer);
 router.post('/Addoffer', Addoffer);
 
 //employers
+router.post('/employer', getEmployer); 
 
 //StudentApplication
 router.post('/AddApplication', AddApplication);
+//Student routes
+router.post('/student',  getStudent); 
+
 
 export default router;

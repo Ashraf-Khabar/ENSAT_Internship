@@ -24,6 +24,7 @@ import RegisterEmployee from "./components/RegisterEmployee";
 import Offer from "./components/dashboardComponents/Student/Offer";
 
 import Apply from "./components/Apply";
+import ProfileEmp from "./components/dashboardComponents/employer/ProfileEmp";
 
 
 function App() {
@@ -102,6 +103,10 @@ function App() {
                       <Route path="/dashboardemp/Myoffers">
                           <Myoffers/>
                       </Route>
+                      <Route path="/dashboardemp/Profile">
+                          <ProfileEmp/>
+                      </Route>
+
                       <Route path="/dashboardemp/Addoffer">
                           <Addoffer/>
                       </Route>
