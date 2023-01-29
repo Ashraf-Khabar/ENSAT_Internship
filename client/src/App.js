@@ -8,23 +8,15 @@ import Home from "./components/Home";
 import {ToastContainer, toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {useState} from "react";
-
 import Profile from "./components/dashboardComponents/Student/Profile";
 import Applications from "./components/dashboardComponents/Student/Applications";
 import Dashboard from "./components/dashboardComponents/Student/Dashboard";
-
-
 import Dashboardemp from "./components/dashboardComponents/employer/dashboardemp";
 import Myoffers from "./components/dashboardComponents/employer/Myoffers";
 import Addoffer from "./components/dashboardComponents/employer/Addoffer";
-
 import RegisterEmployee from "./components/RegisterEmployee";
-
-
 import Offer from "./components/dashboardComponents/Student/Offer";
-
 import Apply from "./components/Apply";
-
 
 function App() {
     const [userId, setUserId] = useState(null);
@@ -86,12 +78,7 @@ function App() {
                         <Route path="/dashboard/apply" offerId={offerId}>
                             <Apply/>
                         </Route>
-
-                        <Route exact path="/dashboardemp">
-                            <Dashboardemp/>
-                        </Route>
                         <Route path="/dashboard/offer/:id" component={Offer} />
-
                         <Route exact path="/dashboardemp">
                             <Dashboardemp/>
                         </Route>
@@ -101,7 +88,6 @@ function App() {
                         <Route path="/dashboardemp/Addoffer">
                             <Addoffer/>
                         </Route>
-
                         <Route path="*">
                             <Page_404/>
                         </Route>

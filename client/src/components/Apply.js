@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import axios from "axios";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import jwt_decode from "jwt-decode";
 
 
-const Apply = () => {
+const Apply = ({offerId}) => {
     const [CV, setCV] = useState('');
     const [cover_letter, setCoverletter] = useState('');
     const [rang, setRang] = useState(0);
@@ -13,14 +13,13 @@ const Apply = () => {
     const [name, setName] = useState("");
     const [token, setToken] = useState("");
     const [expire, setExpire] = useState("");
-
     const history = useHistory();
 
     const AddApplication = async (e) => {
         console.log("clicked");
         const StudentId = id ;
         console.log("student id : " + StudentId);
-        console.log("offer id : " + offerId);
+
         // e.preventDefault();
         // try {
         //     await axios.post('http://localhost:5000/AddApplication', {
