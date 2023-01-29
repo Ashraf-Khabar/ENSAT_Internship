@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
+import Applications from "./ApplicationModel.js";
 import Employers from "./EmployerModel.js";
 import Students from "./StudentModel.js";
 
@@ -47,6 +48,14 @@ Offers.belongsToMany(Students, { through: 'Applications' },{
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 });
+Students.belongsToMany(Offers, { through: 'Applications' },{
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Offers.hasMany(Applications);
+Applications.belongsTo(Offers);
+Students.hasMany(Applications);
+Applications.belongsTo(Students);
 
 
 

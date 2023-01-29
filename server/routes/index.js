@@ -3,7 +3,7 @@ import {getUsers, Register, Login, Logout, RegisterEmployee, getUserById} from "
 import { verifyToken } from "../middleware/VerifyToken.js";
 import { getOffers , getOffer, Addoffer, getOfferByEmployer } from "../controllers/Offres.js";
 import {emailVerification, refreshToken} from "../controllers/RefreshToken.js";
-import { AddApplication } from "../controllers/Applications.js";
+import { AddApplication, getApplications } from "../controllers/Applications.js";
 import { getStudent } from "../controllers/Students.js";
 import { getEmployer } from "../controllers/Employers.js";
 
@@ -36,6 +36,8 @@ router.post('/employer', getEmployer);
 
 //StudentApplication
 router.post('/AddApplication', AddApplication);
+router.get('/Applications', getApplications); 
+
 //Student routes
 router.post('/student',  getStudent); 
 
