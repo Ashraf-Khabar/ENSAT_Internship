@@ -6,8 +6,12 @@ import "tailwindcss/base.css";
 import "tailwindcss/components.css";
 import Moment from "moment";
 
+<<<<<<< HEAD
 
 const Offer = (setOfferId) => {
+=======
+const Offer = () => {
+>>>>>>> parent of 6988ed6 (commit)
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
   const [expire, setExpire] = useState("");
