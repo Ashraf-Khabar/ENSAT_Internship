@@ -4,7 +4,7 @@ ENSAT Internship Application
 <img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf Khabar"> <img src="https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue" alt="Framed by Mr. Hassan Badir">
 
 <p align="center">
-  <img src="[https://cdn.iconscout.com/icon/free/png-512/nodejs-1-282599.png](https://cdn.freebiesupply.com/logos/large/2x/nodejs-1-logo-png-transparent.png)" alt="Node.js" height="70">
+  <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/nodejs-1-logo.png" alt="Node.js" height="70">
   <img src="https://cdn.worldvectorlogo.com/logos/express-1.svg" alt="Express.js" height="70">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js" height="70">
   <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" height="70">
