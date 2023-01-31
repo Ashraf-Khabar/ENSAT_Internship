@@ -71,6 +71,7 @@ Usage
 2.  Changer les pramteere de la base de donnée pour les migration : 
     * `cd server/config/Database.js`
     * Database.js :
+    
       ```js 
         import { Sequelize } from "sequelize";
 
