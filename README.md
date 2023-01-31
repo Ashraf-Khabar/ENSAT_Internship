@@ -1,7 +1,7 @@
 ENSAT Internship Application
 ============================
 
-<img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf Khabar"> <img src="https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue" alt="Framed by Mr. Hassan Badir">
+<img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf khabar"> <img src="https://img.shields.io/badge/Made%20by-Kaouthar%20bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-green" alt="Framed by Mr. Hassan Badir">
 
 <p align="center">
   <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/nodejs-1-logo.png" alt="Node.js" height="70">
