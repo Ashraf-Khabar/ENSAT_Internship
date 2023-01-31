@@ -1,6 +1,10 @@
 <img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf Khabar"> <img src="https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue" alt="Framed by Mr. Hassan Badir">
 
-![Node.js logo](https://nodejs.org/static/images/logo.svg) ![Express.js logo](https://expressjs.com/images/express-facebook-share.png) ![React.js logo](https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png) ![Sequelize logo](https://sequelize.org/v5/manual/asset/logo.png) ![MySQL logo](https://cdn.worldvectorlogo.com/logos/mysql.svg)
+<img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf Khabar" height="50" width="50">
+<img src="https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue" alt="made by Kawtar Bouslim" height="50" width="50">
+<img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui" height="50" width="50">
+<img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan" height="50" width="50">
+<img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue" alt="Framed by Mr. Hassan Badir" height="50" width="50">
 
 Introduction
 ------------
