@@ -1,22 +1,18 @@
-ENSAT Internship Web Application
-================================
+<img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf Khabar"> <img src="https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue" alt="made by Abir Bouzayan"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue" alt="Framed by Mr. Hassan Badir">
 
-[![Made by Ashraf Khabar](https://img.shields.io/badge/Made%20by-Ashraf%20Khabar-blue)](https://github.com/AshrafKhabar) [![Made by Kawtar Bouslim](https://img.shields.io/badge/Made%20by-Kawtar%20Bouslim-blue)](https://github.com/KawtarBouslim) [![Made by Nahid Chaoui](https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue)](https://github.com/NahidChaoui) [![Made by Abir Bouzayan](https://img.shields.io/badge/Made%20by-Abir%20Bouzayan-blue)](https://github.com/AbirBouzayan) [![Framed by Mr. Hassan Badir](https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-blue)](https://github.com/HassanBadir)
+![Node.js logo](https://nodejs.org/static/images/logo.svg) ![Express.js logo](https://expressjs.com/images/express-facebook-share.png) ![React.js logo](https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png) ![Sequelize logo](https://sequelize.org/v5/manual/asset/logo.png) ![MySQL logo](https://cdn.worldvectorlogo.com/logos/mysql.svg)
 
 Introduction
 ------------
 
-This web application, named ENSAT Internship, is built to link students from ENSAT (Ecole Nationale des Sciences Appliquées à Tanger) with companies to find internship opportunities. Companies can create an account, add internship offers and students from ENSAT can apply to these offers.
-
-The application is built using Node.js, React.js, Express.js, Sequelize and MySQL.
+This web application connects students from ENSAT (Ecole Nationale des Sciences Appliquées à Tanger) with companies for internships. Companies can create an account and add internship offers, allowing ENSAT students to apply for the positions. The app is built using Node.js, React.js, Express.js, Sequelize, and MySQL.
 
 Features
 --------
 
--   Link students and companies to find internship opportunities
+-   Connects ENSAT students with companies for internships
 -   Companies can create accounts and add internship offers
--   Students from ENSAT can apply to these offers
--   Built using Node.js, React.js, Express.js, Sequelize and MySQL
+-   Built with Node.js, React.js, Express.js, Sequelize, and MySQL
 
 Requirements
 ------------
@@ -30,20 +26,21 @@ Requirements
 Installation
 ------------
 
-1.  Clone the repository.
-2.  Install the required dependencies by running `npm install`.
-3.  Create a new MySQL database.
-4.  Update the `.env` file with your MySQL credentials.
-5.  Run the migrations by executing `npx sequelize db:migrate`.
-6.  Start the application by running `npm start`.
+1.  Clone the repository to your local machine
+2.  Navigate to the `server` directory using your terminal/command prompt
+3.  Install the required dependencies by running `npm install`
+4.  Start the Node.js server by running `npm start`
+5.  Navigate to the `client` directory using your terminal/command prompt
+6.  Install the required dependencies by running `npm install`
+7.  Start the React development server by running `npm start`
 
 Usage
 -----
 
-1.  Start the application by running `npm start`.
-2.  Open your browser and navigate to `http://localhost:3000`.
-3.  Companies can create an account and add internship offers.
-4.  Students from ENSAT can apply to these offers.
+1.  Start the Node.js server by running `npm start` in the `server` directory
+2.  Start the React development server by running `npm start` in the `client` directory
+3.  Open your browser and navigate to [http://localhost:3000](http://localhost:3000/)
+4.  Companies can create an account and add internship offers, and students can apply for positions.
 
 Contribution
 ------------
@@ -53,4 +50,4 @@ Feel free to fork this repository and make contributions.
 License
 -------
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License.
