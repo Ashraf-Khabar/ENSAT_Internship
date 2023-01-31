@@ -14,39 +14,40 @@ ENSAT Internship Application
 Introduction
 ------------
 
-This web application connects students from ENSAT (Ecole Nationale des Sciences Appliquées à Tanger) with companies for internships. Companies can create an account and add internship offers, allowing ENSAT students to apply for the positions. The app is built using Node.js, React.js, Express.js, Sequelize, and MySQL.
+Cette application web met en relation les étudiants de l'ENSAT (Ecole Nationale des Sciences Appliquées à Tanger) avec des entreprises pour des stages. Les entreprises peuvent créer un compte et ajouter des offres de stage, permettant aux étudiants de l'ENSAT de postuler pour les postes. L'application est construite en utilisant Node.js, React.js, Express.js, Sequelize, et MySQL.
 
-Features
+Caractéristiques
 --------
 
--   Connects ENSAT students with companies for internships
--   Companies can create accounts and add internship offers
--   Built with Node.js, React.js, Express.js, Sequelize, and MySQL
+- Met en relation les étudiants de l'ENSAT avec des entreprises pour des stages.
+- Les entreprises peuvent créer des comptes et ajouter des offres de stage
+- Construit avec Node.js, React.js, Express.js, Sequelize et MySQL.
 
-Requirements
+
+Exigences
 ------------
 
--   Node.js
--   React.js
--   Express.js
--   Sequelize
--   MySQL
+- Node.js
+- React.js
+- Express.js
+- Sequelize
+- MySQL
 
 Installation
 ------------
 
-1.  Clone the repository to your local machine
-2.  Navigate to the `server` directory using your terminal/command prompt
-3.  Install the required dependencies by running `npm install`
-4.  Start the Node.js server by running `npm start`
-5.  Navigate to the `client` directory using your terminal/command prompt
-6.  Install the required dependencies by running `npm install`
-7.  Start the React development server by running `npm start`
+1.  Clonez le référentiel sur votre machine locale.
+2.  Naviguez vers le répertoire `server` en utilisant votre terminal/interface de commande.
+3.  Installez les dépendances requises en exécutant `npm install`.
+4.  Démarrez le serveur Node.js en exécutant `npm start`.
+5.  Naviguez jusqu'au répertoire `client` en utilisant votre terminal/interface de commande.
+6.  Installez les dépendances requises en exécutant `npm install`.
+7.  Démarrez le serveur de développement React en exécutant `npm start`.
 
 Usage
 -----
 
-1.  Start the Node.js server by running `npm start` in the `server` directory, le fichier `index.js` : 
+1.  Démarrez le serveur Node.js en exécutant `npm start` dans le répertoire `server`, le fichier `index.js` : 
   ```js 
     import express from "express";
     import dotenv from "dotenv";
@@ -67,9 +68,22 @@ Usage
 
     app.listen(5000, ()=> console.log('Server running at port 5000'));
   ``` 
-3.  Start the React development server by running `npm start` in the `client` directory
-4.  Open your browser and navigate to [http://localhost:3000](http://localhost:3000/)
-5.  Companies can create an account and add internship offers, and students can apply for positions.
+2.  Changer les pramteere de la base de donnée pour les migration : 
+    * `cd server/config/Database.js`
+    * Database.js :
+      ```js 
+        import { Sequelize } from "sequelize";
+
+        const db = new Sequelize('crud_project', 'root', '', {
+            host: "localhost",
+            dialect: "mysql"
+        });
+
+        export default db;
+      ```
+3.  Démarrez le serveur de développement React en exécutant `npm start` dans le répertoire `client`.
+4.  Ouvrez votre navigateur et naviguez sur [http://localhost:3000](http://localhost:3000/)
+5.  Les entreprises peuvent créer un compte et ajouter des offres de stage, et les étudiants peuvent postuler à des postes.
 
 Contribution
 ------------
