@@ -4,11 +4,11 @@ ENSAT Internship Application
 <img src="https://img.shields.io/badge/Made%20by-Achraf%20Khabar-blue" alt="made by Achraf khabar"> <img src="https://img.shields.io/badge/Made%20by-Kaouthar%20bouslim-blue" alt="made by Kawtar Bouslim"> <img src="https://img.shields.io/badge/Made%20by-Nahid%20Chaoui-blue" alt="made by Nahid Chaoui"> <img src="https://img.shields.io/badge/Made%20by-Abir%20el%20bouzayani-blue" alt="made by Abir el bouzayani"> <img src="https://img.shields.io/badge/Framed%20by-Mr.%20Hassan%20Badir-white" alt="Framed by Mr. Hassan Badir">
 
 <p align="center">
-  <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/nodejs-1-logo.png" alt="Node.js" height="70">
-  <img src="https://cdn.worldvectorlogo.com/logos/express-1.svg" alt="Express.js" height="70">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js" height="70">
-  <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" height="70">
-  <img src="https://sequelize.org/v5/manual/asset/logo-small.png" alt="Sequelize ORM" height="70">
+  <a href="https://nodejs.org/en/"> <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/nodejs-1-logo.png" alt="Node.js" height="70"></a>
+  <a href="https://expressjs.com"> <img src="https://cdn.worldvectorlogo.com/logos/express-1.svg" alt="Express.js" height="70"></a>
+  <a href="https://reactjs.org"> <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React.js" height="70"></a>
+  <a href="https://www.mysql.com"> <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL" height="70"></a>
+  <a href="https://sequelize.org"><img src="https://sequelize.org/v5/manual/asset/logo-small.png" alt="Sequelize ORM" height="70"></a> 
  </p>
 
 Introduction
