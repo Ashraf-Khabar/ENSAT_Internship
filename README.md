@@ -68,7 +68,7 @@ Usage
 
     app.listen(5000, ()=> console.log('Server running at port 5000'));
   ``` 
-2.  Changer les pramteere de la base de donnée pour les migration : 
+2.  Changer les prametres de la base de donnée pour les migration : 
     * `cd server/config/Database.js`
     * Database.js :
     
