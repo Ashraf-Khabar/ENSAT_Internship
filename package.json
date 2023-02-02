@@ -1,0 +1,20 @@
+{
+    "name": "ENSAT_Internship",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "build": "cd server node index.js",
+        "test": "cd server nodemon index.js",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ashraf-Khabar/ENSAT_Internship.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ashraf-Khabar/ENSAT_Internship/issues"
+    },
+    "homepage": "https://github.com/Ashraf-Khabar/ENSAT_Internship#readme"
+}
