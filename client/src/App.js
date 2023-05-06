@@ -72,25 +72,25 @@ function App() {
                             <Profile/>
                         </Route>
 
+
+
+
+
+
+
+
+
                         <Route path="/dashboard/MyApplications">
                             <Applications/>
                         </Route>
-<<<<<<< HEAD
-                        <Route path="/dashboard/apply" >
-                            <Apply offerId={offerId} />
-=======
                         <Route path="/dashboard/apply">
                             <Apply/>
->>>>>>> parent of 6988ed6 (commit)
                         </Route>
                         <Route path="/dashboard/offer/:id">
                             <Offer setOfferId={setOfferId} />
                         </Route>
-<<<<<<< HEAD
-=======
                         <Route path="/dashboard/offer/:id" component={Offer}/>
 
->>>>>>> parent of 6988ed6 (commit)
                         <Route exact path="/dashboardemp">
                             <Dashboardemp/>
                         </Route>
