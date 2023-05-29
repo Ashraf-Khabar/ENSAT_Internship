@@ -87,7 +87,7 @@ function App() {
                             <Apply/>
                         </Route>
                         <Route path="/dashboard/offer/:id">
-                            <Offer setOfferId={setOfferId} />
+                            <Offer/>
                         </Route>
                         <Route path="/dashboard/offer/:id" component={Offer}/>
 

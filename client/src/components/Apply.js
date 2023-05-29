@@ -16,26 +16,6 @@ const Apply = (offerId) => {
     const history = useHistory();
 
     const AddApplication = async (e) => {
-<<<<<<< HEAD
-        console.log("clicked");
-        const StudentId = id ;
-        console.log("student id : " + StudentId) ;
-        console.log("offer id : " + offerId) ;
-        // e.preventDefault();
-        // try {
-        //     await axios.post('http://localhost:5000/AddApplication', {
-        //         CV: CV,
-        //         cover_letter: cover_letter,
-        //         rang: rang
-        //     });
-        //     toast.success("Your application has been sent successfully");
-        //     history.push("/dashboard");
-        // } catch (error) {
-        //     if (error.response) {
-        //         toast.error(error.response.data.msg);
-        //     }
-        // }
-=======
         e.preventDefault();
         try {
             await axios.post('http://localhost:5000/AddApplication', {
@@ -50,7 +30,6 @@ const Apply = (offerId) => {
                 toast.error(error.response.data.msg);
             }
         }
->>>>>>> parent of 6988ed6 (commit)
     }
     useEffect(() => {
         refreshToken();
